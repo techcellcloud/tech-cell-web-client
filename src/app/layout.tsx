@@ -4,6 +4,7 @@ import HeaderClient from 'components/Navigation/HeaderClient';
 import 'styles/base/index.scss';
 import ThemeProviderMui from 'components/Provider/ThemeProviderMui';
 import FooterClient from 'components/Navigation/FooterClient';
+import SessionNextAuthProvider from 'components/Provider/SessionNextAuth.provider';
 
 const montserrat = Montserrat({ subsets: ['latin'], weight: ['500', '600', '700'] });
 
@@ -18,11 +19,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <link rel="icon" href="/favicon.ico" />
             </head>
             <body className={montserrat.className}>
-                <ThemeProviderMui>
-                    <HeaderClient />
-                    {children}
-                    <FooterClient />
-                </ThemeProviderMui>
+                <SessionNextAuthProvider>
+                    <ThemeProviderMui>
+                        <HeaderClient />
+                        {children}
+                        <FooterClient />
+                    </ThemeProviderMui>
+                </SessionNextAuthProvider>
             </body>
         </html>
     );

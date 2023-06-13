@@ -20,7 +20,6 @@ import SearchBox from 'components/Form/SearchComponent';
 import DrawerLayout from 'components/Layout/DrawerLayout';
 import styles from 'styles/components/header.module.scss';
 
-
 interface Props {
     window?: () => Window;
 }
@@ -39,7 +38,11 @@ const HeaderClient = (props: Props) => {
     return (
         <Box sx={{ display: 'flex' }}>
             <AppBar component="nav" sx={{ backgroundColor: theme.color.red }}>
-                <Toolbar sx={{ justifyContent: { xs: 'space-between', sm: 'space-between' } }}>
+                <Toolbar
+                    sx={{
+                        justifyContent: { xs: 'space-between', sm: 'space-between' },
+                    }}
+                >
                     <IconButton
                         color="inherit"
                         aria-label="open drawer"

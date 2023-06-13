@@ -10,12 +10,18 @@ interface Props {
 
 const DrawerLayout = ({ handleDrawerToggle }: Props) => {
     return (
-        <Box onClick={handleDrawerToggle}>
+        <Box onClick={handleDrawerToggle} sx={{ color: '#ee4949' }}>
             <Stack flexDirection="row" justifyContent="flex-start">
                 <Image src="/logo-red.png" alt="Logo Techcell" width={150} height={50} />
             </Stack>
             {NAV_ITEMS.map((item, i) => (
-                <MenuComponent key={i} content={item.name} options={item?.menu} isBlackContent />
+                <MenuComponent
+                    key={i}
+                    content={item.name}
+                    options={item?.menu}
+                    icon={item.icon ? <item.icon></item.icon> : undefined}
+                    isBlackContent
+                />
             ))}
         </Box>
     );

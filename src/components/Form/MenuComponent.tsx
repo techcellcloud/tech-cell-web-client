@@ -12,6 +12,7 @@ interface Props {
     content: string;
     options?: IMenuOptions[];
     isBlackContent?: boolean;
+    icon?: React.ReactNode;
 }
 
 export default function MenuComponent(props: Props) {
@@ -27,7 +28,8 @@ export default function MenuComponent(props: Props) {
     };
 
     return (
-        <div>
+        <div className={styles.menu_nav}>
+            {props.icon && props.icon}
             <Button
                 id="basic-button"
                 aria-controls={open ? 'basic-menu' : undefined}

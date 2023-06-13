@@ -18,6 +18,7 @@ import MenuComponent from 'components/Form/MenuComponent';
 import { DRAWER_WIDTH, NAV_ITEMS } from 'constants/NavContants';
 import SearchBox from 'components/Form/SearchComponent';
 import DrawerLayout from 'components/Layout/DrawerLayout';
+import styles from 'styles/components/header.module.scss';
 
 interface Props {
     window?: () => Window;
@@ -37,7 +38,11 @@ const HeaderClient = (props: Props) => {
     return (
         <Box sx={{ display: 'flex' }}>
             <AppBar component="nav" sx={{ backgroundColor: theme.color.red }}>
-                <Toolbar sx={{ justifyContent: { xs: 'flex-start', sm: 'space-between' } }}>
+                <Toolbar
+                    sx={{
+                        justifyContent: { xs: 'space-between', sm: 'space-between' },
+                    }}
+                >
                     <IconButton
                         color="inherit"
                         aria-label="open drawer"
@@ -48,12 +53,7 @@ const HeaderClient = (props: Props) => {
                         <MenuIcon />
                     </IconButton>
                     <Box sx={{ display: { xs: 'none', sm: 'flex' } }}>
-                        <Image
-                            src="/logo-white.png"
-                            alt="Logo Techcell"
-                            width={150}
-                            height={50}
-                        />
+                        <Image src="/logo-white.png" alt="Logo Techcell" width={150} height={50} />
                     </Box>
                     <Stack
                         direction="row"
@@ -70,7 +70,12 @@ const HeaderClient = (props: Props) => {
                             }}
                         >
                             {NAV_ITEMS.map((item, i) => (
-                                <MenuComponent key={i} content={item.name} options={item?.menu} />
+                                <MenuComponent
+                                    key={i}
+                                    content={item.name}
+                                    options={item?.menu}
+                                    icon={item.icon ? <item.icon></item.icon> : undefined}
+                                />
                             ))}
                         </Box>
                     </Stack>

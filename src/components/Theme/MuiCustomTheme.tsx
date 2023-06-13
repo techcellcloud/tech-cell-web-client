@@ -29,6 +29,7 @@ declare module '@mui/material/styles' {
     }
 }
 
+
 export const theme: Theme = createTheme({
     color: {
         red: '#ee4949',
@@ -39,5 +40,8 @@ export const theme: Theme = createTheme({
     },
     fontFamily: {
         primary: "'Montserrat', sans-serif",
+    },
+    typography: {
+      fontFamily: ["Montserrat", "sans-serif"].join(","),
     },
 });

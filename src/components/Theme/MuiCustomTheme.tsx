@@ -8,6 +8,7 @@ declare module '@mui/material/styles' {
             lightRed: string;
             black: string;
             lightBlack: string;
+            gray: string;
         };
         fontFamily: {
             primary: string;
@@ -20,6 +21,7 @@ declare module '@mui/material/styles' {
             lightRed?: string;
             black?: string;
             lightBlack?: string;
+            gray?: string;
         };
         fontFamily?: {
             primary: string;
@@ -34,6 +36,7 @@ export const theme: Theme = createTheme({
         lightRed: 'rgba(238, 73, 73, 0.15)',
         black: '#3b3b3b',
         lightBlack: 'rgba(59, 59, 59, 0.15)',
+        gray: '#777777',
     },
     fontFamily: {
         primary: "'Montserrat', sans-serif",

@@ -54,6 +54,7 @@ const handler = NextAuth({
             return baseUrl;
         },
     },
+    // Custom page 
     // pages: {
     //     signIn: '/auth/signin',
     //     signOut: '/auth/signout',

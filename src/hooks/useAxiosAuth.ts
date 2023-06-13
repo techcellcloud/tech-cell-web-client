@@ -5,6 +5,16 @@ import { useEffect } from 'react';
 import { axiosAuth } from 'libs/axios';
 import { useRefreshToken } from 'hooks/useRefreshToken';
 
+/**
+ *
+ * Sử dụng libs.axios, không phải package axios
+ *
+ * Khi sử dụng hooks này:
+ *  - Nếu response trả về status code là 401, sẽ tự động gọi vào hooks `useRefreshToken`
+ * để nhận về token mới, khi nhận token mới thành công, gán token mới vào session của next-auth
+ * tiếp tục gọi lại request đã bị fail trước đó với token mới đó
+ *
+ */
 export function useAxiosAuth() {
     const { data: session } = useSession();
     const refreshToken = useRefreshToken();

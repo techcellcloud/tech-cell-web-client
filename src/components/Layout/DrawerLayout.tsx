@@ -10,7 +10,7 @@ interface Props {
 
 const DrawerLayout = ({ handleDrawerToggle }: Props) => {
     return (
-        <Box onClick={handleDrawerToggle} sx={{ color: '#ee4949' }}>
+        <Box sx={{ color: '#ee4949' }}>
             <Stack flexDirection="row" justifyContent="flex-start">
                 <Image src="/logo-red.png" alt="Logo Techcell" width={150} height={50} />
             </Stack>

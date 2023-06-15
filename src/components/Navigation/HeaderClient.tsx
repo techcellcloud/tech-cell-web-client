@@ -18,7 +18,7 @@ import MenuComponent from 'components/Form/MenuComponent';
 import { DRAWER_WIDTH, NAV_ITEMS } from 'constants/NavContants';
 import SearchBox from 'components/Form/SearchComponent';
 import DrawerLayout from 'components/Layout/DrawerLayout';
-import styles from 'styles/components/header.module.scss';
+// import styles from 'styles/components/header.module.scss';
 
 interface Props {
     window?: () => Window;
@@ -36,7 +36,7 @@ const HeaderClient = (props: Props) => {
     const container = window !== undefined ? () => window().document.body : undefined;
 
     return (
-        <Box sx={{ display: 'flex' }}>
+        <Box sx={{ display: 'flex', height:{xs:'56px' , sm:'64px'}}}>
             <AppBar component="nav" sx={{ backgroundColor: theme.color.red }}>
                 <Toolbar
                     sx={{

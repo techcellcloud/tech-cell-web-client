@@ -18,6 +18,7 @@ import MenuComponent from 'components/Form/MenuComponent';
 import { DRAWER_WIDTH, NAV_ITEMS } from 'constants/NavContants';
 import SearchBox from 'components/Form/SearchComponent';
 import DrawerLayout from 'components/Layout/DrawerLayout';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 // import styles from 'styles/components/header.module.scss';
 
 interface Props {
@@ -36,11 +37,21 @@ const HeaderClient = (props: Props) => {
     const container = window !== undefined ? () => window().document.body : undefined;
 
     return (
-        <Box sx={{ display: 'flex', height:{xs:'56px' , sm:'64px'}}}>
-            <AppBar component="nav" sx={{ backgroundColor: theme.color.red }}>
+        <Box sx={{ display: 'flex', height: { xs: '56px', sm: '64px' } }}>
+            <AppBar
+                component="nav"
+                sx={{
+                    backgroundColor: theme.color.red,
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                }}
+            >
                 <Toolbar
                     sx={{
-                        justifyContent: { xs: 'space-between', sm: 'space-between' },
+                        justifyContent: { xs: 'space-around', lg: 'space-between' },
+                        width: { lg: '1200px', xs: '390px' },
+                        alignItems: 'center',
                     }}
                 >
                     <IconButton
@@ -52,8 +63,20 @@ const HeaderClient = (props: Props) => {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Box sx={{ display: { xs: 'none', sm: 'flex' } }}>
-                        <Image src="/logo-white.png" alt="Logo Techcell" width={150} height={50} />
+                    <Box
+                        sx={{
+                            display: { xs: 'block', sm: 'flex' },
+                            width: { xs: '130px', lg: '150px' },
+                        }}
+                    >
+                        <Image
+                            src="/logo-white.png"
+                            alt="Logo Techcell"
+                            width={0}
+                            height={0}
+                            sizes="100vw"
+                            style={{ width: '100%', height: 'auto' }}
+                        />
                     </Box>
                     <Stack
                         direction="row"
@@ -61,7 +84,9 @@ const HeaderClient = (props: Props) => {
                         gap={5}
                         sx={{ justifyContent: { xs: 'space-between' } }}
                     >
-                        <SearchBox />
+                        <Box sx={{ display: { xs: 'none', lg: 'block' } }}>
+                            <SearchBox />
+                        </Box>
                         <Box
                             sx={{
                                 display: { xs: 'none', sm: 'flex' },
@@ -79,7 +104,29 @@ const HeaderClient = (props: Props) => {
                             ))}
                         </Box>
                     </Stack>
+                    <Box sx={{ display: { sx: 'block', lg: 'none' } }}>
+                        <ShoppingCartIcon />
+                    </Box>
                 </Toolbar>
+                <Box
+                    sx={{
+                        display: { xs: 'flex', lg: 'none' },
+                        justifyContent: 'center',
+                        alignContent: 'center',
+                    }}
+                >
+                    <Box
+                        sx={{
+                            color: '#fff',
+                            backgroundColor: '#F16464',
+                            width: '320px',
+                            margin: '5px 0px 5px 0px',
+                            borderRadius: '5px',
+                        }}
+                    >
+                        <SearchBox />
+                    </Box>
+                </Box>
             </AppBar>
             <Box component="nav" sx={{}}>
                 <Drawer

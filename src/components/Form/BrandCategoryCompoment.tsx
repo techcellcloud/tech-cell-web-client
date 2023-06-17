@@ -5,7 +5,7 @@ import Grid from '@mui/material/Grid';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const BrandCategoryCompoment = () => {
+export const BrandCategoryCompoment = () => {
     return (
         <Box sx={{ flexGrow: 1, margin: '20px 0px', display: 'flex', justifyContent: 'center' }}>
             <Grid
@@ -493,4 +493,3 @@ const BrandCategoryCompoment = () => {
     );
 };
 
-export default BrandCategoryCompoment;

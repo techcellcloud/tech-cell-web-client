@@ -1,6 +1,6 @@
 import SearchIcon from '@mui/icons-material/Search';
 import { InputBase, alpha, styled } from '@mui/material';
-import styles from 'styles/components/search.module.scss';
+import styles from '@styles/components/search.module.scss';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -44,18 +44,13 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }));
 
-const SearchComponent = () => {
+export const SearchComponent = () => {
     return (
-            <Search>
-                <SearchIconWrapper>
-                    <SearchIcon />
-                </SearchIconWrapper>
-                <StyledInputBase
-                    placeholder="Tìm kiếm..."
-                    inputProps={{ 'aria-label': 'search' }}
-                />
-            </Search>
+        <Search>
+            <SearchIconWrapper>
+                <SearchIcon />
+            </SearchIconWrapper>
+            <StyledInputBase placeholder="Tìm kiếm..." inputProps={{ 'aria-label': 'search' }} />
+        </Search>
     );
 };
-
-export default SearchComponent;

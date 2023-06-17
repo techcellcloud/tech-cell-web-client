@@ -1,14 +1,14 @@
 import React from 'react';
 import { Box, Stack } from '@mui/material';
 import Image from 'next/image';
-import { NAV_ITEMS } from 'constants/NavContants';
-import MenuComponent from 'components/Form/MenuComponent';
+import { NAV_ITEMS } from '@constants/NavContants';
+import { MenuComponent } from '@components/Form';
 
 interface Props {
     handleDrawerToggle: () => void;
 }
 
-const DrawerLayout = ({ handleDrawerToggle }: Props) => {
+export const DrawerLayout = ({ handleDrawerToggle }: Props) => {
     return (
         <Box sx={{ color: '#ee4949' }}>
             <Stack flexDirection="row" justifyContent="flex-start">
@@ -26,5 +26,3 @@ const DrawerLayout = ({ handleDrawerToggle }: Props) => {
         </Box>
     );
 };
-
-export default DrawerLayout;

@@ -14,10 +14,10 @@ import {
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useTheme } from '@mui/material/styles';
-import MenuComponent from 'components/Form/MenuComponent';
+import { MenuComponent } from 'components/Form';
 import { DRAWER_WIDTH, NAV_ITEMS } from 'constants/NavContants';
-import SearchBox from 'components/Form/SearchComponent';
-import DrawerLayout from 'components/Layout/DrawerLayout';
+import { SearchComponent as SearchBox } from 'components/Form';
+import { DrawerLayout } from 'components/Layout/DrawerLayout';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 // import styles from 'styles/components/header.module.scss';
 
@@ -25,7 +25,7 @@ interface Props {
     window?: () => Window;
 }
 
-const HeaderClient = (props: Props) => {
+export const HeaderClient = (props: Props) => {
     const theme = useTheme();
     const { window } = props;
     const [mobileOpen, setMobileOpen] = useState<boolean>(false);
@@ -155,5 +155,3 @@ const HeaderClient = (props: Props) => {
         </Box>
     );
 };
-
-export default HeaderClient;

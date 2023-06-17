@@ -7,8 +7,9 @@
     margin-top: auto;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 20px;
-    position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
@@ -18,7 +19,7 @@
         display: grid;
         grid-template-columns: repeat(4, minmax(0, 1fr));
         gap: 20px;
-
+        width: 1200px;
         @include responsive(max_sm) {
             grid-template-columns: repeat(1, minmax(0, 1fr));
             gap: 20px;

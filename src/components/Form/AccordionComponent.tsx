@@ -7,7 +7,7 @@ interface Props {
     options?: any[];
 }
 
-const AccordionComponent = (props: Props) => {
+export const AccordionComponent = (props: Props) => {
     return (
         <Accordion>
             <AccordionSummary
@@ -24,4 +24,3 @@ const AccordionComponent = (props: Props) => {
     );
 };
 
-export default AccordionComponent;

@@ -12,20 +12,18 @@ import {
     Toolbar,
     Stack,
 } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
+import { Menu as MenuIcon, ShoppingCart as ShoppingCartIcon } from '@mui/icons-material';
 import { useTheme } from '@mui/material/styles';
-import MenuComponent from 'components/Form/MenuComponent';
-import { DRAWER_WIDTH, NAV_ITEMS } from 'constants/NavContants';
-import SearchBox from 'components/Form/SearchComponent';
-import DrawerLayout from 'components/Layout/DrawerLayout';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { MenuComponent, SearchComponent } from '@components/Form';
+import { DRAWER_WIDTH, NAV_ITEMS } from '@constants/NavContants';
+import { DrawerLayout } from '@components/Layout';
 // import styles from 'styles/components/header.module.scss';
 
 interface Props {
     window?: () => Window;
 }
 
-const HeaderClient = (props: Props) => {
+export const HeaderClient = (props: Props) => {
     const theme = useTheme();
     const { window } = props;
     const [mobileOpen, setMobileOpen] = useState<boolean>(false);
@@ -85,7 +83,7 @@ const HeaderClient = (props: Props) => {
                         sx={{ justifyContent: { xs: 'space-between' } }}
                     >
                         <Box sx={{ display: { xs: 'none', lg: 'block' } }}>
-                            <SearchBox />
+                            <SearchComponent />
                         </Box>
                         <Box
                             sx={{
@@ -124,7 +122,7 @@ const HeaderClient = (props: Props) => {
                             borderRadius: '5px',
                         }}
                     >
-                        <SearchBox />
+                        <SearchComponent />
                     </Box>
                 </Box>
             </AppBar>
@@ -155,5 +153,3 @@ const HeaderClient = (props: Props) => {
         </Box>
     );
 };
-
-export default HeaderClient;

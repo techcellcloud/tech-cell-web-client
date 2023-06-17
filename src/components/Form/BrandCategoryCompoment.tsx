@@ -1,22 +1,21 @@
 'use client';
 import React from 'react';
-import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
+import { Box, Grid } from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const BrandCategoryCompoment = () => {
+export const BrandCategoryCompoment = () => {
     return (
         <Box sx={{ flexGrow: 1, margin: '20px 0px', display: 'flex', justifyContent: 'center' }}>
             <Grid
                 container
                 spacing={1}
                 sx={{
-                    marginLeft:{xs:'0.1px'},
+                    marginLeft: { xs: '0.1px' },
                     width: { xs: '390px', lg: '1200px', sm: '960px' },
-                    border: {xs:'none' , lg:'1px solid #EE4949'},
+                    border: { xs: 'none', lg: '1px solid #EE4949' },
                     overflow: 'hidden',
-                    borderRadius:{xs:'0px' , lg:'5px'},
+                    borderRadius: { xs: '0px', lg: '5px' },
                     cursor: 'pointer',
                 }}
             >
@@ -398,7 +397,12 @@ const BrandCategoryCompoment = () => {
                                 alignItems: 'center',
                             }}
                         >
-                            <Image src="/brand_category_img/10.webp" width={60} height={60} alt="" />
+                            <Image
+                                src="/brand_category_img/10.webp"
+                                width={60}
+                                height={60}
+                                alt=""
+                            />
                         </Box>
                         <Box
                             sx={{
@@ -437,7 +441,12 @@ const BrandCategoryCompoment = () => {
                                 alignItems: 'center',
                             }}
                         >
-                            <Image src="/brand_category_img/11.webp" width={60} height={60} alt="" />
+                            <Image
+                                src="/brand_category_img/11.webp"
+                                width={60}
+                                height={60}
+                                alt=""
+                            />
                         </Box>
                         <Box
                             sx={{
@@ -476,7 +485,12 @@ const BrandCategoryCompoment = () => {
                                 alignItems: 'center',
                             }}
                         >
-                            <Image src="/brand_category_img/12.webp" width={60} height={60} alt="" />
+                            <Image
+                                src="/brand_category_img/12.webp"
+                                width={60}
+                                height={60}
+                                alt=""
+                            />
                         </Box>
                         <Box
                             sx={{
@@ -492,5 +506,3 @@ const BrandCategoryCompoment = () => {
         </Box>
     );
 };
-
-export default BrandCategoryCompoment;

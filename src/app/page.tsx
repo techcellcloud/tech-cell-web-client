@@ -1,7 +1,6 @@
 'use client';
 
-import CarouselComponent from 'components/Form/CarouselCpmponent';
-import BrandCategoryCompoment from 'components/Form/BrandCategoryCompoment';
+import { CarouselComponent, BrandCategoryCompoment } from 'components/Form';
 
 export default function Home() {
     return (

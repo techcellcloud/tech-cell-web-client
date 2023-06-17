@@ -1,9 +1,8 @@
 import { Metadata } from 'next';
 import { Inter, Montserrat } from 'next/font/google';
-import HeaderClient from 'components/Navigation/HeaderClient';
+import { HeaderClient, FooterClient } from 'components/Navigation';
 import 'styles/base/index.scss';
-import ThemeProviderMui from 'components/Provider/ThemeProviderMui';
-import FooterClient from 'components/Navigation/FooterClient';
+import { ThemeProviderMui } from 'components/Provider';
 
 const montserrat = Montserrat({ subsets: ['latin'], weight: ['500', '600', '700'] });
 

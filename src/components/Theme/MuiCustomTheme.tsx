@@ -1,5 +1,4 @@
-import { createTheme } from '@mui/material/styles';
-import { Theme } from '@mui/material/styles/createTheme';
+import { createTheme, Theme } from '@mui/material/styles';
 
 declare module '@mui/material/styles' {
     interface Theme {
@@ -29,7 +28,6 @@ declare module '@mui/material/styles' {
     }
 }
 
-
 export const theme: Theme = createTheme({
     color: {
         red: '#ee4949',
@@ -42,6 +40,6 @@ export const theme: Theme = createTheme({
         primary: "'Montserrat', sans-serif",
     },
     typography: {
-      fontFamily: ["Montserrat", "sans-serif"].join(","),
+        fontFamily: ['Montserrat', 'sans-serif'].join(','),
     },
 });

@@ -3,12 +3,7 @@
 import React from 'react';
 import styles from 'styles/components/footer.module.scss';
 import { Stack, Chip, useTheme, IconButton } from '@mui/material';
-import FacebookIcon from '@mui/icons-material/Facebook';
-import InstagramIcon from '@mui/icons-material/Instagram';
-import YouTubeIcon from '@mui/icons-material/YouTube';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
-import MailIcon from '@mui/icons-material/Mail';
-import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
+import { Facebook, Instagram, YouTube, LocationOn, Mail, PhoneAndroid } from '@mui/icons-material';
 import Image from 'next/image';
 import AppStore from '@public/images/app-store.png';
 import GooglePlay from '@public/images/google-play.png';
@@ -58,7 +53,7 @@ export const FooterClient = () => {
                     <h4>Liên hệ với chúng tôi</h4>
                     <div className={styles.footerContact}>
                         <div className={styles.contactSymbol}>
-                            <LocationOnIcon style={{ padding: '2px' }} />
+                            <LocationOn style={{ padding: '2px' }} />
                         </div>
                         <p>
                             Hno: 18 Tam Trinh Hoang Mai, Ha Noi <br />
@@ -67,13 +62,13 @@ export const FooterClient = () => {
                     </div>
                     <div className={styles.footerContact}>
                         <div className={styles.contactSymbol}>
-                            <MailIcon style={{ padding: '2px' }} />
+                            <Mail style={{ padding: '2px' }} />
                         </div>
                         <p>techcellVTC@gmail.com</p>
                     </div>
                     <div className={styles.footerContact}>
                         <div className={styles.contactSymbol}>
-                            <PhoneAndroidIcon style={{ padding: '2px' }} />
+                            <PhoneAndroid style={{ padding: '2px' }} />
                         </div>
                         <p>
                             Phone 1 : 0123456789

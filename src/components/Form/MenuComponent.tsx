@@ -1,11 +1,8 @@
 'use client';
 
 import * as React from 'react';
-import Button from '@mui/material/Button';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
+import { Button, Menu, MenuItem, useTheme } from '@mui/material';
 import { IMenuOptions } from 'interfaces/form';
-import { useTheme } from '@mui/material';
 import styles from '@styles/components/button.module.scss';
 
 interface Props {

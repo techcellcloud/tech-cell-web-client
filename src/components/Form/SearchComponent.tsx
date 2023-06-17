@@ -1,4 +1,4 @@
-import SearchIcon from '@mui/icons-material/Search';
+import { Search as SearchIcon } from '@mui/icons-material';
 import { InputBase, alpha, styled } from '@mui/material';
 import styles from '@styles/components/search.module.scss';
 

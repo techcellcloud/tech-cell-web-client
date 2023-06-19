@@ -1,0 +1,104 @@
+.text_promotion {
+    font-size: 22px;
+    display: inline-block;
+    margin-left: 15px;
+    font-weight: 500;
+}
+
+// Product Promotion
+.product {
+    width: 290px;
+    height: 440px;
+    border-radius: 5px;
+    padding: 10px 10px 35px 10px;
+    box-shadow: 0px 0px 5px #ee4949;
+    &:nth-child(1) {
+        margin-left: 5px;
+    }
+    &:hover img {
+        transform: scale(1.05);
+    }
+    &InfoContainer {
+        a {
+            width: 208px !important;
+            height: 300px !important;
+        }
+    }
+    &ImgContent {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    &Imgitem {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 205px;
+        height: 175px;
+        img {
+            margin-top: 10px;
+            transition: all 0.3s ease-in;
+        }
+    }
+    &Nameproduct {
+        margin-top: 10px;
+        font-size: 14px;
+        font-weight: 600;
+        height: 65px;
+    }
+    &Price {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px !important;
+    }
+    &Newprice {
+        color: #d70018;
+        display: inline-block;
+        font-size: 16px;
+        font-weight: 700;
+    }
+    &Oldprice{
+        font-size: 14px;
+        color: #777;
+    }
+
+    &Promotion {
+        background: #f3f4f6;
+        border: 1px solid #e5e7eb;
+        border-radius: 5px;
+        display: flex;
+        font-size: 12px;
+        line-height: 1.5;
+        margin-left: 0;
+        padding: 5px;
+        text-transform: none;
+        width: auto;
+        margin-top: 15px;
+    }
+    &Rating {
+        color: #f59e0b;
+        margin-top: 15px;
+    }
+    &Wishlist {
+        display: flex;
+        justify-content: right;
+        align-items: center;
+        cursor: pointer;
+        span {
+            color: #777;
+            font-size: 12px;
+        }
+        &:hover .productIconheart{
+            color: #d70018;
+        }
+    }
+    &Iconheart {
+        height: 24px !important;
+        color: #ee4949;
+        margin-left: 5px;
+        transition: all 0.3s;
+    }
+    
+   
+}

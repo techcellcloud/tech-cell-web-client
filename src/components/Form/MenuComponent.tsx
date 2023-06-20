@@ -1,12 +1,9 @@
 'use client';
 
 import * as React from 'react';
-import Button from '@mui/material/Button';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
+import { Button, Menu, MenuItem, useTheme } from '@mui/material';
 import { IMenuOptions } from 'interfaces/form';
-import { useTheme } from '@mui/material';
-import styles from 'styles/components/button.module.scss';
+import styles from '@styles/components/button.module.scss';
 
 interface Props {
     content: string;
@@ -15,7 +12,7 @@ interface Props {
     icon?: React.ReactNode;
 }
 
-export default function MenuComponent(props: Props) {
+export function MenuComponent(props: Props) {
     const theme = useTheme();
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);

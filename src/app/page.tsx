@@ -1,12 +1,12 @@
-import { Box } from "@mui/material";
-import ProductCard from "components/ProductCard/ProductCard";
+'use client';
+
+import { CarouselComponent, BrandCategoryCompoment } from 'components/Form';
 
 export default function Home() {
-  return (
-    <div style={{marginBottom: "20px"}}>
-      
-        <ProductCard />
-      
-    </div>
-  );
+    return (
+        <>
+            <CarouselComponent />
+            <BrandCategoryCompoment />
+        </>
+    );
 }

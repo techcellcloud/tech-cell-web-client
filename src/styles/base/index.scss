@@ -1,5 +1,11 @@
-@import "variables";
-@import "reset";
-@import "mixins";
-@import "custom";
+@import 'variables';
+@import 'reset';
+@import 'mixins';
+@import 'custom';
+
+li {
+    button {
+        background-color: #ee4949 !important;
+    }
+}
 

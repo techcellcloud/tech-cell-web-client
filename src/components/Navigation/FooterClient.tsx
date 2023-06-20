@@ -77,20 +77,18 @@ export const FooterClient = () => {
                         </p>
                     </div>
                 </div>
-                <div className={styles.footerLogo}>
-                    <Stack>
-                        <Image src="/logo-red.png" alt="Logo Techcell" width={150} height={50} />
-                    </Stack>
-                    <Stack direction="row" gap={2} alignItems="center">
-                        <Link href="/">
-                            <Image src={GooglePlay} alt="Download platforms" height={50} />
-                        </Link>
-                    </Stack>
-                    <Stack direction="row" gap={2} alignItems="center">
-                        <Link href="/">
-                            <Image src={AppStore} alt="Download platforms" height={50} />
-                        </Link>
-                    </Stack>
+                <div>
+                    <div className={styles.footerLogo}>
+                        <Stack spacing={2} alignItems="center" justifyContent="center">
+                            <Image src="/logo-red.png" alt="Logo Techcell" width={150} height={50} />
+                            <Link href="/">
+                                <Image src={GooglePlay} alt="Download platforms" height={50} />
+                            </Link>
+                            <Link href="/">
+                                <Image src={AppStore} alt="Download platforms" height={50} />
+                            </Link>
+                        </Stack>
+                    </div>
                 </div>
             </div>
             <hr className={styles.footerDivider} />

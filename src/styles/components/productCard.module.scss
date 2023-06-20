@@ -1,7 +1,7 @@
 @import '../base/variables';
 
 .product_card {
-    padding: 15px;
+    padding: 13px;
     background-color: white;
     border-radius: 10px;
     overflow: hidden;
@@ -31,3 +31,7 @@
     color: $blackColor;
 }
 
+.stack {
+    margin-top: 10px;
+    margin-bottom: 15px;
+}

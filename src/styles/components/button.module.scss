@@ -27,30 +27,18 @@
   align-items: center;
 }
 
-
-.addToCart {
+.buy_now {
   border-radius: 0%;
-  color: $blackColor;
-  border-color: $blackLightColor;
+  color: $primaryColor;
+  font-size: 13px;
+  border: 2px solid;
+  border-color: $primaryColor;
+  background-color: white;
+  
   &:hover {
-      background-color: $primaryColor;
-      color: white;
-      border-color: $primaryColor;
-  }
-}
-
-.addToWishlist {
-  border-radius: 0%;
-  color: $grayColor;
-  border-color: $blackLightColor;
-
-  &:hover {
-      color: $primaryColor;
-      border-color: $primaryColor;
-      background-color: white;
-  }
-
-  &Icon {
-    padding: 3px;
+    color: $riceColor;
+    border: 2px solid;
+    background-color: $primaryColor;
+    border-color: $primaryColor;
   }
 }

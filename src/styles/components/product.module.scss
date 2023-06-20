@@ -1,3 +1,6 @@
+@import '../base/variables';
+@import '../base/mixins';
+
 .text_promotion {
     font-size: 22px;
     display: inline-block;
@@ -5,15 +8,16 @@
     font-weight: 500;
 }
 
+
 // Product Promotion
 .product {
-    width: 290px;
     height: 440px;
     border-radius: 5px;
     padding: 10px 10px 35px 10px;
-    box-shadow: 0px 0px 5px #ee4949;
+    box-shadow: 0px 0px 5px $primaryColor;
+  
     &:nth-child(1) {
-        margin-left: 5px;
+        margin-left: 10px;
     }
     &:hover img {
         transform: scale(1.05);
@@ -95,7 +99,7 @@
     }
     &Iconheart {
         height: 24px !important;
-        color: #ee4949;
+        color: $primaryColor;
         margin-left: 5px;
         transition: all 0.3s;
     }

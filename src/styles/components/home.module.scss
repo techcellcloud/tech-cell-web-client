@@ -1,0 +1,16 @@
+@import '../base/variables';
+@import '../base/mixins';
+
+.horizontal_list {
+    display: flex;
+    flex-direction: row;
+    color: $grayColor;
+    text-transform: uppercase;
+}
+
+.divider {
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, lightGray, $grayColor, $primaryColor, $grayColor, lightGray);
+    margin-top: 0;
+}

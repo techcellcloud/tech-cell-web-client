@@ -42,4 +42,5 @@ export const theme: Theme = createTheme({
     typography: {
         fontFamily: ['Montserrat', 'sans-serif'].join(','),
     },
+    spacing: 5,
 });

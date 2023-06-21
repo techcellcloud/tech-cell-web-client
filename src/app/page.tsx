@@ -28,7 +28,7 @@ export default function Home() {
             <CarouselComponent />
             <ShopServicesComponent />
             <Stack spacing={3}>
-                <Container maxWidth="lg" sx={{ marginTop: '30px', marginBottom: '20px' }}>
+                <Container maxWidth="lg">
                     <Box
                         sx={{
                             margin: '20px 0px',

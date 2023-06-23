@@ -16,16 +16,14 @@ export const PromotionComponent = () => {
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
-                marginTop: '10px',
+                marginTop:'10px'
             }}
         >
             <Box
                 sx={{
-                    width: { lg: '1200px', xs: '390px' },
-                    margin: '15px 0px 15px 0px',
+                    width: { lg: '1200px', xs: '380px' },
                     height: '542px',
                     borderRadius: '5px',
-                    boxShadow: '0px 0px 10px #ee4949',
                 }}
             >
                 <Box sx={{ padding: '15px 0px 15px 0px' }}>
@@ -42,241 +40,241 @@ export const PromotionComponent = () => {
                         <LocalMallIcon sx={{ display: 'inline-block' }} />
                         <p className={styles.text_promotion}>Khuyến Mãi HOT</p>
                     </Box>
-                    <Box>
-                        <Grid sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                            <Grid xs>
-                                <Box sx={{width:{lg:'290px' ,xs:'175px'}}}>
-                                    <div className={styles.product}>
-                                        <div className={styles.productInfoContainer}>
-                                            <div className={styles.productInfo}>
-                                                <Link href="">
-                                                    <div className={styles.productImgContent}>
-                                                        <div className={styles.productImgitem}>
-                                                            <Image
-                                                                src="/product_img/phone1.webp"
-                                                                width={160}
-                                                                height={160}
-                                                                alt="phone1"
-                                                            />
-                                                        </div>
+                    <Box sx={{ display: 'flex', justifyContent: { xs: 'space-around' } }}>
+                        <Grid
+                            container
+                            sx={{
+                                display: 'flex',
+                                justifyContent: { sm: 'space-between', xs: 'space-around' },
+                            }}
+                        >
+                            <Grid
+                                xs={6} lg={3}
+                            >
+                                <div className={styles.product}>
+                                    <div className={styles.productInfoContainer}>
+                                        <div className={styles.productInfo}>
+                                            <Link href="">
+                                                <div className={styles.productImgContent}>
+                                                    <div className={styles.productImgitem}>
+                                                        <Image
+                                                            src="/product_img/phone1.webp"
+                                                            width={160}
+                                                            height={160}
+                                                            alt="phone1"
+                                                        />
                                                     </div>
-                                                    <div>
-                                                        <h3 className={styles.productNameproduct}>
-                                                            OPPO Reno8 T 5G (8GB - 128GB)
-                                                        </h3>
-                                                    </div>
-                                                    <div className={styles.productPrice}>
-                                                        <div className={styles.productNewprice}>
-                                                            9.490.000<sup>đ</sup>
-                                                        </div>
-                                                        <div className={styles.productOldprice}>
-                                                            Giá cũ : 9.990.000
-                                                            <sup>đ</sup>
-                                                        </div>
-                                                    </div>
-                                                    <div className={styles.productContentpromotion}>
-                                                        <div className={styles.productPromotion}>
-                                                            <p>
-                                                                Tặng thêm dịch vụ bảo hành Vip 12
-                                                                tháng 1 đổi 1
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </Link>
-                                                <div className={styles.productRating}>
-                                                    <StarIcon />
-                                                    <StarIcon />
-                                                    <StarIcon />
-                                                    <StarIcon />
-                                                    <StarIcon />
                                                 </div>
+                                                <div>
+                                                    <h3 className={styles.productNameproduct}>
+                                                        OPPO Reno8 T 5G (8GB - 128GB)
+                                                    </h3>
+                                                </div>
+                                                <div className={styles.productPrice}>
+                                                    <div className={styles.productNewprice}>
+                                                        9.490.000<sup>đ</sup>
+                                                    </div>
+                                                    <div className={styles.productOldprice}>
+                                                        Giá cũ : 9.990.000
+                                                        <sup>đ</sup>
+                                                    </div>
+                                                </div>
+                                                <div className={styles.productContentpromotion}>
+                                                    <div className={styles.productPromotion}>
+                                                        <p>
+                                                            Tặng thêm dịch vụ bảo hành Vip 12 tháng
+                                                            1 đổi 1
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </Link>
+                                            <div className={styles.productRating}>
+                                                <StarIcon />
+                                                <StarIcon />
+                                                <StarIcon />
+                                                <StarIcon />
+                                                <StarIcon />
                                             </div>
-                                            <div className={styles.productWishlist}>
-                                                <span>Yêu thích</span>
-                                                <div className={styles.productIconheart}>
-                                                    <FavoriteIcon />
-                                                </div>
+                                        </div>
+                                        <div className={styles.productWishlist}>
+                                            <span>Yêu thích</span>
+                                            <div className={styles.productIconheart}>
+                                                <FavoriteIcon />
                                             </div>
                                         </div>
                                     </div>
-                                </Box>
+                                </div>
                             </Grid>
-                            <Grid xs>
-                                <Grid xs>
-                                <Box sx={{width:{lg:'290px' ,xs:'175px'}}}>
-                                    <div className={styles.product}>
-                                        <div className={styles.productInfoContainer}>
-                                            <div className={styles.productInfo}>
-                                                <Link href="">
-                                                    <div className={styles.productImgContent}>
-                                                        <div className={styles.productImgitem}>
-                                                            <Image
-                                                                src="/product_img/phone1.webp"
-                                                                width={160}
-                                                                height={160}
-                                                                alt="phone1"
-                                                            />
-                                                        </div>
+                            <Grid
+                                xs={6} lg={3}
+                            >
+                                <div className={styles.product}>
+                                    <div className={styles.productInfoContainer}>
+                                        <div className={styles.productInfo}>
+                                            <Link href="">
+                                                <div className={styles.productImgContent}>
+                                                    <div className={styles.productImgitem}>
+                                                        <Image
+                                                            src="/product_img/phone1.webp"
+                                                            width={160}
+                                                            height={160}
+                                                            alt="phone1"
+                                                        />
                                                     </div>
-                                                    <div>
-                                                        <h3 className={styles.productNameproduct}>
-                                                            OPPO Reno8 T 5G (8GB - 128GB)
-                                                        </h3>
-                                                    </div>
-                                                    <div className={styles.productPrice}>
-                                                        <div className={styles.productNewprice}>
-                                                            9.490.000<sup>đ</sup>
-                                                        </div>
-                                                        <div className={styles.productOldprice}>
-                                                            Giá cũ : 9.990.000
-                                                            <sup>đ</sup>
-                                                        </div>
-                                                    </div>
-                                                    <div className={styles.productContentpromotion}>
-                                                        <div className={styles.productPromotion}>
-                                                            <p>
-                                                                Tặng thêm dịch vụ bảo hành Vip 12
-                                                                tháng 1 đổi 1
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </Link>
-                                                <div className={styles.productRating}>
-                                                    <StarIcon />
-                                                    <StarIcon />
-                                                    <StarIcon />
-                                                    <StarIcon />
-                                                    <StarIcon />
                                                 </div>
+                                                <div>
+                                                    <h3 className={styles.productNameproduct}>
+                                                        OPPO Reno8 T 5G (8GB - 128GB)
+                                                    </h3>
+                                                </div>
+                                                <div className={styles.productPrice}>
+                                                    <div className={styles.productNewprice}>
+                                                        9.490.000<sup>đ</sup>
+                                                    </div>
+                                                    <div className={styles.productOldprice}>
+                                                        Giá cũ : 9.990.000
+                                                        <sup>đ</sup>
+                                                    </div>
+                                                </div>
+                                                <div className={styles.productContentpromotion}>
+                                                    <div className={styles.productPromotion}>
+                                                        <p>
+                                                            Tặng thêm dịch vụ bảo hành Vip 12 tháng
+                                                            1 đổi 1
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </Link>
+                                            <div className={styles.productRating}>
+                                                <StarIcon />
+                                                <StarIcon />
+                                                <StarIcon />
+                                                <StarIcon />
+                                                <StarIcon />
                                             </div>
-                                            <div className={styles.productWishlist}>
-                                                <span>Yêu thích</span>
-                                                <div className={styles.productIconheart}>
-                                                    <FavoriteIcon />
-                                                </div>
+                                        </div>
+                                        <div className={styles.productWishlist}>
+                                            <span>Yêu thích</span>
+                                            <div className={styles.productIconheart}>
+                                                <FavoriteIcon />
                                             </div>
                                         </div>
                                     </div>
-                                </Box>
-                                </Grid>
+                                </div>
                             </Grid>
-                            <Grid xs>
-                                <Grid xs>
-                                <Box sx={{width:{lg:'290px' ,xs:'175px'}}}>
-                                    <div className={styles.product}>
-                                        <div className={styles.productInfoContainer}>
-                                            <div className={styles.productInfo}>
-                                                <Link href="">
-                                                    <div className={styles.productImgContent}>
-                                                        <div className={styles.productImgitem}>
-                                                            <Image
-                                                                src="/product_img/phone1.webp"
-                                                                width={160}
-                                                                height={160}
-                                                                alt="phone1"
-                                                            />
-                                                        </div>
+                            <Grid
+                                xs ={6} lg={3}
+                            >
+                                <div className={styles.product}>
+                                    <div className={styles.productInfoContainer}>
+                                        <div className={styles.productInfo}>
+                                            <Link href="">
+                                                <div className={styles.productImgContent}>
+                                                    <div className={styles.productImgitem}>
+                                                        <Image
+                                                            src="/product_img/phone1.webp"
+                                                            width={160}
+                                                            height={160}
+                                                            alt="phone1"
+                                                        />
                                                     </div>
-                                                    <div>
-                                                        <h3 className={styles.productNameproduct}>
-                                                            OPPO Reno8 T 5G (8GB - 128GB)
-                                                        </h3>
-                                                    </div>
-                                                    <div className={styles.productPrice}>
-                                                        <div className={styles.productNewprice}>
-                                                            9.490.000<sup>đ</sup>
-                                                        </div>
-                                                        <div className={styles.productOldprice}>
-                                                            Giá cũ : 9.990.000
-                                                            <sup>đ</sup>
-                                                        </div>
-                                                    </div>
-                                                    <div className={styles.productContentpromotion}>
-                                                        <div className={styles.productPromotion}>
-                                                            <p>
-                                                                Tặng thêm dịch vụ bảo hành Vip 12
-                                                                tháng 1 đổi 1
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </Link>
-                                                <div className={styles.productRating}>
-                                                    <StarIcon />
-                                                    <StarIcon />
-                                                    <StarIcon />
-                                                    <StarIcon />
-                                                    <StarIcon />
                                                 </div>
+                                                <div>
+                                                    <h3 className={styles.productNameproduct}>
+                                                        OPPO Reno8 T 5G (8GB - 128GB)
+                                                    </h3>
+                                                </div>
+                                                <div className={styles.productPrice}>
+                                                    <div className={styles.productNewprice}>
+                                                        9.490.000<sup>đ</sup>
+                                                    </div>
+                                                    <div className={styles.productOldprice}>
+                                                        Giá cũ : 9.990.000
+                                                        <sup>đ</sup>
+                                                    </div>
+                                                </div>
+                                                <div className={styles.productContentpromotion}>
+                                                    <div className={styles.productPromotion}>
+                                                        <p>
+                                                            Tặng thêm dịch vụ bảo hành Vip 12 tháng
+                                                            1 đổi 1
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </Link>
+                                            <div className={styles.productRating}>
+                                                <StarIcon />
+                                                <StarIcon />
+                                                <StarIcon />
+                                                <StarIcon />
+                                                <StarIcon />
                                             </div>
-                                            <div className={styles.productWishlist}>
-                                                <span>Yêu thích</span>
-                                                <div className={styles.productIconheart}>
-                                                    <FavoriteIcon />
-                                                </div>
+                                        </div>
+                                        <div className={styles.productWishlist}>
+                                            <span>Yêu thích</span>
+                                            <div className={styles.productIconheart}>
+                                                <FavoriteIcon />
                                             </div>
                                         </div>
                                     </div>
-                                </Box>
-                                </Grid>
+                                </div>
                             </Grid>
-                            <Grid xs>
-                                <Grid xs>
-                                <Box sx={{width:{lg:'290px' ,xs:'175px'}}}>
-                                    <div className={styles.product}>
-                                        <div className={styles.productInfoContainer}>
-                                            <div className={styles.productInfo}>
-                                                <Link href="">
-                                                    <div className={styles.productImgContent}>
-                                                        <div className={styles.productImgitem}>
-                                                            <Image
-                                                                src="/product_img/phone1.webp"
-                                                                width={160}
-                                                                height={160}
-                                                                alt="phone1"
-                                                            />
-                                                        </div>
+                            <Grid
+                                xs={6} lg={3}
+                            >
+                                <div className={styles.product}>
+                                    <div className={styles.productInfoContainer}>
+                                        <div className={styles.productInfo}>
+                                            <Link href="">
+                                                <div className={styles.productImgContent}>
+                                                    <div className={styles.productImgitem}>
+                                                        <Image
+                                                            src="/product_img/phone1.webp"
+                                                            width={160}
+                                                            height={160}
+                                                            alt="phone1"
+                                                        />
                                                     </div>
-                                                    <div>
-                                                        <h3 className={styles.productNameproduct}>
-                                                            OPPO Reno8 T 5G (8GB - 128GB)
-                                                        </h3>
-                                                    </div>
-                                                    <div className={styles.productPrice}>
-                                                        <div className={styles.productNewprice}>
-                                                            9.490.000<sup>đ</sup>
-                                                        </div>
-                                                        <div className={styles.productOldprice}>
-                                                            Giá cũ : 9.990.000
-                                                            <sup>đ</sup>
-                                                        </div>
-                                                    </div>
-                                                    <div className={styles.productContentpromotion}>
-                                                        <div className={styles.productPromotion}>
-                                                            <p>
-                                                                Tặng thêm dịch vụ bảo hành Vip 12
-                                                                tháng 1 đổi 1
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </Link>
-                                                <div className={styles.productRating}>
-                                                    <StarIcon />
-                                                    <StarIcon />
-                                                    <StarIcon />
-                                                    <StarIcon />
-                                                    <StarIcon />
                                                 </div>
+                                                <div>
+                                                    <h3 className={styles.productNameproduct}>
+                                                        OPPO Reno8 T 5G (8GB - 128GB)
+                                                    </h3>
+                                                </div>
+                                                <div className={styles.productPrice}>
+                                                    <div className={styles.productNewprice}>
+                                                        9.490.000<sup>đ</sup>
+                                                    </div>
+                                                    <div className={styles.productOldprice}>
+                                                        Giá cũ : 9.990.000
+                                                        <sup>đ</sup>
+                                                    </div>
+                                                </div>
+                                                <div className={styles.productContentpromotion}>
+                                                    <div className={styles.productPromotion}>
+                                                        <p>
+                                                            Tặng thêm dịch vụ bảo hành Vip 12 tháng
+                                                            1 đổi 1
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </Link>
+                                            <div className={styles.productRating}>
+                                                <StarIcon />
+                                                <StarIcon />
+                                                <StarIcon />
+                                                <StarIcon />
+                                                <StarIcon />
                                             </div>
-                                            <div className={styles.productWishlist}>
-                                                <span>Yêu thích</span>
-                                                <div className={styles.productIconheart}>
-                                                    <FavoriteIcon />
-                                                </div>
+                                        </div>
+                                        <div className={styles.productWishlist}>
+                                            <span>Yêu thích</span>
+                                            <div className={styles.productIconheart}>
+                                                <FavoriteIcon />
                                             </div>
                                         </div>
                                     </div>
-                                </Box>
-                                </Grid>
+                                </div>
                             </Grid>
                         </Grid>
                     </Box>

@@ -6,19 +6,23 @@
     display: inline-block;
     margin-left: 15px;
     font-weight: 500;
+    @include responsive(max_sm){
+        font-size: 18px;
+    }
 }
-
 
 // Product Promotion
 .product {
-    height: 440px;
     border-radius: 5px;
     padding: 10px 10px 35px 10px;
-    box-shadow: 0px 0px 5px $primaryColor;
-  
-    &:nth-child(1) {
-        margin-left: 10px;
+    margin:0px 5px 0px 5px ;
+    width: 290px;
+    height: 440px;
+    @include responsive(max_sm){
+        width: 180px;
+        height: 330px;
     }
+   
     &:hover img {
         transform: scale(1.05);
     }
@@ -39,9 +43,16 @@
         align-items: center;
         width: 205px;
         height: 175px;
+        @include responsive(max_sm){
+            height: 130px;
+        }
         img {
             margin-top: 10px;
             transition: all 0.3s ease-in;
+            @include responsive(max_sm){
+                width: 120px;
+                height: 120px;
+            }
         }
     }
     &Nameproduct {
@@ -49,22 +60,37 @@
         font-size: 14px;
         font-weight: 600;
         height: 65px;
+        @include responsive(max_sm){
+            height: auto;
+            font-size: 10px;
+            margin-bottom: 10px;
+        }
     }
     &Price {
         display: flex;
         justify-content: space-between;
         align-items: center;
         margin-bottom: 10px !important;
+        @include responsive(max_sm){
+            display: inline;
+        }
+
     }
     &Newprice {
         color: #d70018;
         display: inline-block;
         font-size: 16px;
         font-weight: 700;
+        @include responsive(max_sm){
+            font-size: 14px;
+        }
     }
     &Oldprice{
         font-size: 14px;
         color: #777;
+        @include responsive(max_sm){
+            font-size: 12px;
+        }
     }
 
     &Promotion {
@@ -79,10 +105,19 @@
         text-transform: none;
         width: auto;
         margin-top: 15px;
+        @include responsive(max_sm){
+            font-size: 10px;
+        }   
     }
     &Rating {
         color: #f59e0b;
         margin-top: 15px;
+        @include responsive(max_sm){
+            margin-top: 5px;
+            svg{
+                width: 18px;
+            }
+        }
     }
     &Wishlist {
         display: flex;
@@ -96,12 +131,20 @@
         &:hover .productIconheart{
             color: #d70018;
         }
+        @include responsive(max_sm){
+            margin-top: -10px;
+        }
     }
     &Iconheart {
         height: 24px !important;
         color: $primaryColor;
         margin-left: 5px;
         transition: all 0.3s;
+        @include responsive(max_sm){
+            svg{
+                width: 20px;
+            }
+        }
     }
     
    

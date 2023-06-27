@@ -16,7 +16,6 @@ export const BrandCategoryCompoment = () => {
                     border: { xs: 'none', lg: '1px solid #EE4949' },
                     overflow: 'hidden',
                     borderRadius: { xs: '0px', lg: '5px' },
-                    boxShadow:'0px 0px 10px #f47c7c',
                     cursor: 'pointer',
                 }}
             >

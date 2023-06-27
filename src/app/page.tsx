@@ -9,7 +9,8 @@ export default function Home() {
         <>
             <CarouselComponent />
             <BrandCategoryCompoment />
-            <Box sx={{width:{lg:'1200px', xs:'380px'}, margin:'0px auto'}}>
+            <Box sx={{margin:'0px auto'} }>
+            <Box sx={{maxWidth:{lg:'100%', xs:'100%'},margin:{lg:'0px 159px 0px 159px',xs:'0px',sm:'0px',md:'0px'}}}>
                 <Image
                     src="/background_img/2.webp"
                     width={0}
@@ -18,6 +19,7 @@ export default function Home() {
                     style={{ width: '100%', height: 'auto' ,borderRadius:'5px'}}
                     alt="img1"
                 />
+            </Box>
             </Box>
             <PromotionComponent />
         </>

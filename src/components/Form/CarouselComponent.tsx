@@ -35,14 +35,16 @@ export const CarouselComponent = (_props: any) => {
     ];
     return (
         <Box
-            sx={{ display: 'flex', justifyContent: 'center', marginTop: { xs: '46px', lg: '0px' } }}
+            sx={{ display: 'flex', justifyContent: 'center' }}
         >
-            <Box sx={{ width: { xs: '390px', lg: '1200px' } }}>
+            <Box sx={{width:{lg:'1200px' ,xs:'390px',sm:'600px',md:'900px'}}}>
+            <Box sx={{ maxWidth: { xs: '100%', lg: '100%' } }}>
                 <Carousel>
                     {items.map((item, i) => (
                         <Item key={i} item={item} />
                     ))}
                 </Carousel>
+            </Box>
             </Box>
         </Box>
     );

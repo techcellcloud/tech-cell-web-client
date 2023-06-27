@@ -13,6 +13,7 @@ import {
     Stack,
 } from '@mui/material';
 import { Menu as MenuIcon, ShoppingCart as ShoppingCartIcon } from '@mui/icons-material';
+import SearchIcon from '@mui/icons-material/Search';
 import { useTheme } from '@mui/material/styles';
 import { MenuComponent, SearchComponent } from '@components/Form';
 import { DRAWER_WIDTH, NAV_ITEMS } from '@constants/NavContants';
@@ -43,12 +44,13 @@ export const HeaderClient = (props: Props) => {
                     display: 'flex',
                     justifyContent: 'space-between',
                     alignItems: 'center',
+                    maxWidth:'100%'
                 }}
             >
                 <Toolbar
                     sx={{
                         justifyContent: { xs: 'space-around', lg: 'space-between' },
-                        width: { lg: '1200px', xs: '390px' },
+                        // width: { lg: '1200px', xs: '390px', md: '990px', sm: '900px' },
                         alignItems: 'center',
                     }}
                 >
@@ -57,13 +59,13 @@ export const HeaderClient = (props: Props) => {
                         aria-label="open drawer"
                         edge="start"
                         onClick={handleDrawerToggle}
-                        sx={{ mr: 2, display: { sm: 'none' } }}
+                        sx={{ mr: 2, display: { sm: 'block', lg: 'none' } }}
                     >
                         <MenuIcon />
                     </IconButton>
                     <Box
                         sx={{
-                            display: { xs: 'block', sm: 'flex' },
+                            display: { xs: 'none', sm: 'none', md: 'none', lg: 'block' },
                             width: { xs: '130px', lg: '150px' },
                         }}
                     >
@@ -87,7 +89,7 @@ export const HeaderClient = (props: Props) => {
                         </Box>
                         <Box
                             sx={{
-                                display: { xs: 'none', sm: 'flex' },
+                                display: { xs: 'none', sm: 'none', md: 'none', lg: 'flex' },
                                 gap: '15px',
                                 alignItems: 'center',
                             }}
@@ -102,11 +104,12 @@ export const HeaderClient = (props: Props) => {
                             ))}
                         </Box>
                     </Stack>
-                    <Box sx={{ display: { sx: 'block', lg: 'none' } }}>
-                        <ShoppingCartIcon />
+                    <Box sx={{ display:{ sm: 'flex', md: 'flex', lg: 'none' }}}>
+                        <SearchIcon />
+                        <Box sx={{marginLeft:'15px'}}><ShoppingCartIcon /></Box>
                     </Box>
                 </Toolbar>
-                <Box
+                {/* <Box
                     sx={{
                         display: { xs: 'flex', lg: 'none' },
                         justifyContent: 'center',
@@ -124,7 +127,7 @@ export const HeaderClient = (props: Props) => {
                     >
                         <SearchComponent />
                     </Box>
-                </Box>
+                </Box> */}
             </AppBar>
             <Box component="nav" sx={{}}>
                 <Drawer
@@ -136,7 +139,7 @@ export const HeaderClient = (props: Props) => {
                         keepMounted: true,
                     }}
                     sx={{
-                        display: { xs: 'block', sm: 'none' },
+                        display: { xs: 'block', sm: 'block', lg: 'none' },
                         '& .MuiDrawer-paper': {
                             boxSizing: 'border-box',
                             width: DRAWER_WIDTH,

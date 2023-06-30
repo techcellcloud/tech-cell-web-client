@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Stack } from '@mui/material';
+import { Box, Link, Stack } from '@mui/material';
 import Image from 'next/image';
 import { NAV_ITEMS } from '@constants/NavContants';
 import { AccordionComponent, MenuComponent } from '@components/Form';
@@ -20,11 +20,13 @@ export const DrawerLayout = ({ handleDrawerToggle }: Props) => {
                         key={i}
                         content={item.name}
                         options={item?.menu}
-                        icon={item.icon ? <item.icon></item.icon> : undefined}
+                        // icon={item.icon ? <item.icon></item.icon> : undefined}
                         // isBlackContent
                     />
                 ) : (
-                    <p>{item.name}</p>
+                    <Box sx={{margin:'20px 0px'}}> 
+                        <Link sx={{textDecoration:'none', color:"#ee4949"}} href="/">{item.name}</Link>
+                    </Box>
                 );
             })}
         </Box>

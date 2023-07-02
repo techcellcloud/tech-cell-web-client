@@ -80,7 +80,7 @@ export const HeaderClient = (props: Props) => {
                 <Toolbar
                     sx={{
                         justifyContent: { xs: 'space-between', lg: 'space-between' },
-                        width: { lg: '1200px', xs: '390px', md: '990px', sm: '900px' },
+                        width: { lg: '1200px', xs: '100%', md: '100%', sm: '100%' },
                         alignItems: 'center',
                         padding: { xs: '0px 10px' },
                     }}

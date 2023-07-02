@@ -37,7 +37,7 @@ export const CarouselComponent = (_props: any) => {
         <Box
             sx={{ display: 'flex', justifyContent: 'center' }}
         >
-            <Box sx={{width:{lg:'1200px' ,xs:'390px',sm:'600px',md:'900px'}}}>
+            <Box sx={{width:{lg:'1200px' ,xs:'100%',sm:'100%',md:'100%'}}}>
             <Box sx={{ maxWidth: { xs: '100%', lg: '100%' } }}>
                 <Carousel>
                     {items.map((item, i) => (

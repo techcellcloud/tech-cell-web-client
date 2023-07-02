@@ -9,8 +9,8 @@ export default function Home() {
         <>
             <CarouselComponent />
             <BrandCategoryCompoment />
-            <Box sx={{margin:'0px auto'} }>
-            <Box sx={{maxWidth:{lg:'100%', xs:'100%'},margin:{lg:'0px 159px 0px 159px',xs:'0px',sm:'0px',md:'0px'}}}>
+            <Box sx={{margin:'0px auto',maxWidth:'1200px'} }>
+            <Box sx={{maxWidth:{lg:'100%', xs:'100%'}}}>
                 <Image
                     src="/background_img/2.webp"
                     width={0}

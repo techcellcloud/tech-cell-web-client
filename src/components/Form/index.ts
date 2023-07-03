@@ -4,3 +4,5 @@ export * from './CarouselComponent';
 export * from './MenuComponent';
 export * from './SearchComponent';
 export * from './PromotionComponent';
+export * from './CardComponent';
+export * from './ProductDetail';

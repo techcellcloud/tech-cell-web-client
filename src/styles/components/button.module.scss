@@ -1,6 +1,6 @@
+@import '../base/variables';
 .buttonMenu {
     position: relative;
-
     // &::after {
     //   content: '';
     //   position: absolute;
@@ -13,7 +13,6 @@
     //   transform-origin: bottom right;
     //   transition: transform 0.45s ease-out;
     // }
-
     // &:hover::after {
     //   transform: scaleX(1);
     //   transform-origin: bottom left;
@@ -26,7 +25,6 @@
 }
 
 // Button modal search
-
 .button_search {
     background-color: #ee4949;
     color: #eaeaea;
@@ -37,8 +35,32 @@
     cursor: pointer;
 }
 
-
 // DrawerLayout Css 
 .css-1elwnq4-MuiPaper-root-MuiAccordion-root:before {
     background-color: #fff;
+}
+
+.addToCart {
+    border-radius: 0%;
+    color: $blackColor;
+    border-color: $blackLightColor;
+    &:hover {
+        background-color: $primaryColor;
+        color: white;
+        border-color: $primaryColor;
+    }
+}
+
+.addToWishlist {
+    border-radius: 0%;
+    color: $grayColor;
+    border-color: $blackLightColor;
+    &:hover {
+        color: $primaryColor;
+        border-color: $primaryColor;
+        background-color: white;
+    }
+    &Icon {
+        padding: 3px;
+    }
 }

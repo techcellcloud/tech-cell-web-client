@@ -4,13 +4,14 @@
 .footer {
     background-color: $riceColor;
     padding: 20px 24px;
-    margin-top: auto;
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     position: relative;
     gap: 20px;
+    position: relative;
     bottom: 0;
     left: 0;
     width: 100%;
@@ -84,8 +85,9 @@
     }
 
     &Bottom {
+        width: 100%;
         display: flex;
-        justify-content: space-between;
+        justify-content: space-between !important;
         flex-wrap: wrap;
         align-items: center;
 

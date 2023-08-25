@@ -1,7 +1,6 @@
 'use client';
 
-import * as React from 'react';
-import { Metadata } from 'next';
+import React, { useEffect } from 'react';
 import {
     Avatar,
     Box,
@@ -24,13 +23,13 @@ import { useAppDispatch } from '@store/store';
 import { useRouter } from 'next/navigation';
 import { register } from '@store/slices/authSlice';
 
-export const metadata: Metadata = {
-    title: 'TechCell - Đăng ký',
-};
-
 const Signup = () => {
     const router = useRouter();
     const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        document.title = `Đăng Nhập`;
+    }, [document.title]);
 
     const formik = useFormik({
         initialValues: new RegisterModel(),

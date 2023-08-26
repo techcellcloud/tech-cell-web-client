@@ -8,27 +8,27 @@ import {
     Avatar,
     Box,
     Button,
-    Checkbox,
     Container,
     CssBaseline,
     Divider,
-    FormControlLabel,
     Grid,
-    IconButton,
-    Stack,
     TextField,
     Typography,
 } from '@mui/material';
-import { FacebookRounded, Google, PhoneIphone } from '@mui/icons-material';
+
+import { PhoneIphone } from '@mui/icons-material';
+
+import { useAppDispatch } from '@store/store';
+
+import { useFormik } from 'formik';
+
+import { VerifyEmailModel } from 'models';
+import { VerifyEmailSchema } from 'validate/auth.validate';
 
 import { Copyright } from '@components/Layout';
-import { useFormik } from 'formik';
-import { LoginSchema } from 'validate/auth.validate';
-import { LoginModel } from 'models';
-import { useAppDispatch } from '@store/store';
-import { logIn } from '@store/slices/authSlice';
+import { verifyEmail } from '@store/slices/authSlice';
 
-const Login = () => {
+const VerifyEmail = () => {
     const router = useRouter();
     const dispatch = useAppDispatch();
 
@@ -37,15 +37,15 @@ const Login = () => {
     }, [document.title]);
 
     const formik = useFormik({
-        initialValues: new LoginModel(),
-        validationSchema: LoginSchema,
+        initialValues: new VerifyEmailModel(),
+        validationSchema: VerifyEmailSchema,
         onSubmit: async (values) => {
-            const response = await dispatch(logIn(values));
-            
-            if (String(response.payload).startsWith("Email")) {
+            const response = await dispatch(verifyEmail(values));
+
+            if (response.meta.requestStatus === 'fulfilled') {
                 const timeout = setTimeout(() => {
-                    router.replace('/verify');
-                }, 200);
+                    router.replace('/login');
+                }, 1000);
                 return () => {
                     clearTimeout(timeout);
                 };
@@ -69,48 +69,32 @@ const Login = () => {
                         <PhoneIphone />
                     </Avatar>
                     <Typography component="h1" variant="h5">
-                        Đăng nhập
+                        Xác thực Email
                     </Typography>
                     <Box component="form" onSubmit={formik.handleSubmit} sx={{ mt: 1 }}>
                         <TextField
                             margin="normal"
                             fullWidth
-                            id="emailOrUsername"
-                            label="Email hoặc SĐT"
-                            name="emailOrUsername"
-                            autoFocus
-                            value={formik.values.emailOrUsername}
+                            id="email"
+                            label="Email"
+                            name="email"
+                            value={formik.values.email}
                             onChange={formik.handleChange}
                             onBlur={formik.handleBlur}
-                            error={
-                                formik.touched.emailOrUsername &&
-                                Boolean(formik.errors.emailOrUsername)
-                            }
-                            helperText={
-                                formik.touched.emailOrUsername && formik.errors.emailOrUsername
-                            }
+                            error={formik.touched.email && Boolean(formik.errors.email)}
+                            helperText={formik.touched.email && formik.errors.email}
                         />
                         <TextField
                             margin="normal"
                             fullWidth
-                            id="password"
-                            name="password"
-                            label="Password"
-                            type="password"
-                            value={formik.values.password}
+                            id="otpCode"
+                            label="OTP Code"
+                            name="otpCode"
+                            value={formik.values.otpCode}
                             onChange={formik.handleChange}
                             onBlur={formik.handleBlur}
-                            error={formik.touched.password && Boolean(formik.errors.password)}
-                            helperText={formik.touched.password && formik.errors.password}
-                        />
-                        <FormControlLabel
-                            control={<Checkbox value="remember" sx={{ color: '#ee4949' }} />}
-                            label="Nhớ mật khẩu"
-                            sx={{
-                                '& .Mui-checked': {
-                                    color: '#ee4949',
-                                },
-                            }}
+                            error={formik.touched.otpCode && Boolean(formik.errors.otpCode)}
+                            helperText={formik.touched.otpCode && formik.errors.otpCode}
                         />
                         <Button
                             type="submit"
@@ -118,14 +102,9 @@ const Login = () => {
                             variant="contained"
                             sx={{ mt: 3, mb: 2, bgcolor: '#ee4949' }}
                         >
-                            Đăng nhập
+                            Xác nhận
                         </Button>
                         <Grid container>
-                            <Grid item xs>
-                                <Link href="#">
-                                    <Typography variant="body2">Quên mật khẩu</Typography>
-                                </Link>
-                            </Grid>
                             <Grid item>
                                 <Link href="/register">
                                     <Typography
@@ -144,21 +123,6 @@ const Login = () => {
                         </Grid>
                     </Box>
                     <Divider />
-                    <Typography component="h1" variant="h6" sx={{ mt: 3 }}>
-                        Hoặc Đăng nhập với
-                    </Typography>
-                    <Stack spacing={3} direction="row">
-                        <Link href="#">
-                            <IconButton size="large" sx={{ color: '#ee4949' }}>
-                                <FacebookRounded />
-                            </IconButton>
-                        </Link>
-                        <Link href="#">
-                            <IconButton size="large" sx={{ color: '#ee4949' }}>
-                                <Google />
-                            </IconButton>
-                        </Link>
-                    </Stack>
                 </Box>
                 <Copyright sx={{ mt: 8, mb: 4 }} />
             </Container>
@@ -166,4 +130,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default VerifyEmail;

@@ -4,6 +4,7 @@ import { HeaderClient, FooterClient } from 'components/Navigation';
 import 'styles/base/index.scss';
 import { ThemeProviderMui } from 'components/Provider';
 import styles from '../styles/components/button.module.scss'
+import { ReduxProvider } from '@components/Provider/ReduxProvider';
 
 
 const montserrat = Montserrat({ subsets: ['latin'], weight: ['500', '600', '700'] });
@@ -20,9 +21,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </head>
             <body className={`${montserrat.className} ${styles.body}`}>
                 <ThemeProviderMui>
-                    <HeaderClient />
-                    {children}
-                    <FooterClient />
+                    <ReduxProvider>
+                        <HeaderClient />
+                        {children}
+                        <FooterClient />
+                    </ReduxProvider>
                 </ThemeProviderMui>
             </body>
         </html>

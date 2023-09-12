@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     Avatar,
     Box,
@@ -19,17 +19,26 @@ import { Copyright } from '@components/Layout';
 import { PhoneIphone } from '@mui/icons-material';
 import { SignupSchema } from 'validate/auth.validate';
 import { RegisterModel } from 'models';
-import { useAppDispatch } from '@store/store';
+import { useAppDispatch, useAppSelector } from '@store/store';
 import { useRouter } from 'next/navigation';
 import { register } from '@store/slices/authSlice';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Dialog from '@mui/material/Dialog';
+import VerifyEmail from '../verify/page';
 
 const Signup = () => {
     const router = useRouter();
     const dispatch = useAppDispatch();
+    const [open, setOpen] = useState(false);
+
+    const handleClose = () => {
+        setOpen(false);
+    };
 
     useEffect(() => {
-        document.title = `Đăng Nhập`;
-    }, [document.title]);
+        document.title = `Đăng ký`;
+    }, []);
 
     const formik = useFormik({
         initialValues: new RegisterModel(),
@@ -37,18 +46,45 @@ const Signup = () => {
         onSubmit: async (values) => {
             const response = await dispatch(register(values));
             if (response.meta.requestStatus === 'fulfilled') {
-                const timeout = setTimeout(() => {
-                    router.replace('/verify');
-                }, 1000);
-                return () => {
-                    clearTimeout(timeout);
-                };
+                console.log(response.meta);
+                toast.success('Mã đã được gửi vào Email của bạn !!', {
+                    position: 'top-center',
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: 'light',
+                });
+                setOpen(true);
+            } else {
+                return toast.error('Tên đăng nhập hoặc tài khoản Email đã được sử dụng !!', {
+                    position: 'top-center',
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: 'light',
+                });
             }
         },
     });
 
     return (
         <>
+            <Dialog
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+            >
+                <VerifyEmail email={String(formik.values.email)} />
+            </Dialog>
+
+            <ToastContainer />
             <Container component="main" maxWidth="xs">
                 <CssBaseline />
                 <Box

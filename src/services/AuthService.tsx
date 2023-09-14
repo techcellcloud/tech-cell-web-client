@@ -8,13 +8,13 @@ import {
     VERIFY_FORGOT_PASSWORD
 } from '@constants/Services';
 import { ILogin, IRegister, IVerifyEmail } from '@interfaces/auth';
-import { ForgotPasswordModel } from 'models';
+import { ForgotPasswordModel, VerifyEmailModel } from 'models';
 
 export const fetchLogin = (payload: ILogin) => instance.post(LOGIN_ENDPOINT, payload);
 
 export const fetchRegister = (payload: IRegister) => instance.post(REGISTER_ENDPOINT, payload);
 
-export const fetchVerifyEmail = (payload: IVerifyEmail) =>
+export const fetchVerifyEmail = (payload: VerifyEmailModel) =>
     instance.post(VERIFY_EMAIL_ENDPOINT, payload);
 
 export const fetchRefresh = (refreshToken: string) =>

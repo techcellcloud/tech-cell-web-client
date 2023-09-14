@@ -29,11 +29,12 @@ import { Copyright } from '@components/Layout';
 import { verifyEmail } from '@store/slices/authSlice';
 import { ToastContainer, toast } from 'react-toastify';
 
-const VerifyEmail = ({email}: {email: string}) => {
+const VerifyEmail = ({email} : {email:string}) => {
     const router = useRouter();
     const dispatch = useAppDispatch();
     const formik = useFormik({
-        initialValues: {...new VerifyEmailModel(), email},
+        enableReinitialize: true,
+        initialValues: { ...new VerifyEmailModel(),email},
         validationSchema: VerifyEmailSchema,
         onSubmit: async (values) => {
             const response = await dispatch(verifyEmail(values));

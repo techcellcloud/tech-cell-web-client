@@ -36,7 +36,7 @@ const Login = () => {
 
     useEffect(() => {
         document.title = `Đăng Nhập`;
-    }, [document.title]);
+    }, []);
 
     const formik = useFormik({
         initialValues: new LoginModel(),

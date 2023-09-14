@@ -25,7 +25,7 @@ import { register } from '@store/slices/authSlice';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Dialog from '@mui/material/Dialog';
-import VerifyEmail from '../verify/page';
+import VerifyEmail from '../verify/VerifyEmail';
 
 const Signup = () => {
     const router = useRouter();

@@ -1,5 +1,6 @@
 import { IAuthSlice, ILogin, IRegister, IVerifyEmail } from '@interfaces/auth';
 import { Dispatch, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { VerifyEmailModel } from 'models';
 import { fetchLogin, fetchRegister, fetchVerifyEmail } from 'services/AuthService';
 
 export const logIn = createAsyncThunk('auth/login', async(loginData: ILogin, { rejectWithValue }) => {
@@ -37,7 +38,7 @@ export const register = createAsyncThunk('auth/register', async(registerData: IR
     }
 });
 
-export const verifyEmail = createAsyncThunk('auth/verify-email', async(verifyData: IVerifyEmail, { rejectWithValue }) => {
+export const verifyEmail = createAsyncThunk('auth/verify-email', async(verifyData: VerifyEmailModel, { rejectWithValue }) => {
     try {
         await fetchVerifyEmail(verifyData);
     } catch (error: any) {

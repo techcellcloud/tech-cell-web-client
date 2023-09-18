@@ -12,7 +12,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
 
     useEffect(() => {
         dispatch(authenticate());
-    }, []);
+    }, [dispatch]);
 
     useEffect(() => {
         if (isAuthenticated) {
@@ -23,7 +23,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
                 clearTimeout(timeout);
             };
         }
-    }, [isAuthenticated]);
+    }, [isAuthenticated, router]);
 
     return <section>{children}</section>;
 }

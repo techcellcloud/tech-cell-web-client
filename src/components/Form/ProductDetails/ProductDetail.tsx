@@ -17,18 +17,9 @@ import { EndowProduct } from './EndowProduct';
 import { BundleProduct } from './BundleProduct';
 import { SalientFeatures } from './SalientFeatures';
 // import { string } from 'yup';
-
-import Button from '@mui/material/Button';
-import { styled } from '@mui/material/styles';
-import Dialog from '@mui/material/Dialog';
-import DialogTitle from '@mui/material/DialogTitle';
-import DialogContent from '@mui/material/DialogContent';
-import DialogActions from '@mui/material/DialogActions';
-import IconButton from '@mui/material/IconButton';
-import CloseIcon from '@mui/icons-material/Close';
-import Typography from '@mui/material/Typography';
 import '../../../styles/components/modal.module.scss';
-
+import { SliderProduct } from '../SilderProductCompoment';
+import { DialogProdutDetail } from '../Common/DialogProductDetail';
 
 export interface DialogTitleProps {
     id: string;
@@ -36,17 +27,8 @@ export interface DialogTitleProps {
     onClose: () => void;
 }
 
-
 export const ProductDetail = () => {
-    const [open, setOpen] = React.useState(false);
-
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
-    const handleClose = () => {
-        setOpen(false);
-    };
-
+    const [showDialog, setShowDialog] = useState(false);
     return (
         <>
             <div className={styles.productDetails_content}>
@@ -180,48 +162,21 @@ export const ProductDetail = () => {
                             <div className={styles.card_body_right}>
                                 <Specification />
                                 <div className={styles.card_right_btn}>
-                                    <a onClick={handleClickOpen}>
-                                        Xem cấu hình chi tiết
-                                    </a>
-                                    <Dialog
-                                        // onClose={handleClose}
-                                        aria-labelledby="customized-dialog-title"
-                                        open={open}
-                                    >
-                                        <DialogTitle>
-                                            <Typography variant="h6">Thông số kĩ thuật</Typography>
-                                        </DialogTitle>
-                                        <DialogContent dividers>
-                                            <Typography gutterBottom>
-                                                Cras mattis consectetur purus sit amet fermentum.
-                                                Cras justo odio, dapibus ac facilisis in, egestas
-                                                eget quam. Morbi leo risus, porta ac consectetur ac,
-                                                vestibulum at eros.
-                                            </Typography>
-                                            <Typography gutterBottom>
-                                                Praesent commodo cursus magna, vel scelerisque nisl
-                                                consectetur et. Vivamus sagittis lacus vel augue
-                                                laoreet rutrum faucibus dolor auctor.
-                                            </Typography>
-                                            <Typography gutterBottom>
-                                                Aenean lacinia bibendum nulla sed consectetur.
-                                                Praesent commodo cursus magna, vel scelerisque nisl
-                                                consectetur et. Donec sed odio dui. Donec
-                                                ullamcorper nulla non metus auctor fringilla.
-                                            </Typography>
-                                        </DialogContent>
-                                        <DialogActions>
-                                            <Button onClick={handleClose}>
-                                                Save changes
-                                            </Button>
-                                        </DialogActions>
-                                    </Dialog>
+                                    <a onClick={() => setShowDialog(true)}>Xem cấu hình chi tiết</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <hr className={styles.hr} />
+                <SliderProduct />
             </div>
+
+            {/* dialog */}
+            {showDialog && (
+                <DialogProdutDetail isOpen={showDialog} handleClose={() => setShowDialog(false)} />
+            )}
         </>
     );
 };

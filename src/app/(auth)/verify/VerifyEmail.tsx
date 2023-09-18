@@ -18,7 +18,7 @@ import {
 
 import { PhoneIphone } from '@mui/icons-material';
 
-import { useAppDispatch } from '@store/store';
+import { useAppDispatch, useAppSelector } from '@store/store';
 
 import { useFormik } from 'formik';
 
@@ -27,22 +27,28 @@ import { VerifyEmailSchema } from 'validate/auth.validate';
 
 import { Copyright } from '@components/Layout';
 import { verifyEmail } from '@store/slices/authSlice';
+import { ToastContainer, toast } from 'react-toastify';
 
-const VerifyEmail = () => {
+const VerifyEmail = ({email} : {email:string}) => {
     const router = useRouter();
     const dispatch = useAppDispatch();
-
-    useEffect(() => {
-        document.title = `Đăng Nhập`;
-    }, [document.title]);
-
     const formik = useFormik({
-        initialValues: new VerifyEmailModel(),
+        enableReinitialize: true,
+        initialValues: { ...new VerifyEmailModel(),email},
         validationSchema: VerifyEmailSchema,
         onSubmit: async (values) => {
             const response = await dispatch(verifyEmail(values));
-
             if (response.meta.requestStatus === 'fulfilled') {
+                toast.success('Đăng ký thành công !!', {
+                    position: 'top-center',
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: 'light',
+                });
                 const timeout = setTimeout(() => {
                     router.replace('/login');
                 }, 1000);
@@ -50,11 +56,24 @@ const VerifyEmail = () => {
                     clearTimeout(timeout);
                 };
             }
+            if (response.meta.requestStatus === 'rejected') {
+                return toast.error('Đăng kí ko thành công !!', {
+                    position: 'top-center',
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: 'light',
+                });
+            }
         },
     });
 
     return (
         <>
+            <ToastContainer />
             <Container component="main" maxWidth="xs">
                 <CssBaseline />
                 <Box

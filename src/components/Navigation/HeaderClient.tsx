@@ -23,12 +23,14 @@ import Modal from '@mui/material/Modal';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import styles from 'styles/components/button.module.scss';
+import { useAppSelector } from '@store/store';
 
 interface Props {
     window?: () => Window;
 }
 
 export const HeaderClient = (props: Props) => {
+    const {user} = useAppSelector((state) => state.auth);
     const theme = useTheme();
     const { window } = props;
     const [mobileOpen, setMobileOpen] = useState<boolean>(false);
@@ -131,6 +133,7 @@ export const HeaderClient = (props: Props) => {
                                     content={item.name}
                                     options={item?.menu}
                                     icon={item.icon ? <item.icon></item.icon> : undefined}
+                                    href={item.href ? item.href : ''}
                                 />
                             ))}
                         </Box>

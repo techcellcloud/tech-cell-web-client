@@ -13,8 +13,8 @@ export class RegisterModel {
 }
 
 export class VerifyEmailModel {
-    email: string | null = null;
-    otpCode: string | null = null;
+    email?: string = "";
+    otpCode?: string = "";
 }
 
 export class ForgotPasswordModel {

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
@@ -27,22 +27,24 @@ import { LoginSchema } from 'validate/auth.validate';
 import { LoginModel } from 'models';
 import { useAppDispatch } from '@store/store';
 import { logIn } from '@store/slices/authSlice';
+import { ForgotPassword } from '../forgotpassword/FromForgotPassword';
 
 const Login = () => {
     const router = useRouter();
     const dispatch = useAppDispatch();
+    const [openForgotPassword, setOpenForgotPassword] = useState(false);
 
     useEffect(() => {
         document.title = `Đăng Nhập`;
-    }, [document.title]);
+    }, []);
 
     const formik = useFormik({
         initialValues: new LoginModel(),
         validationSchema: LoginSchema,
         onSubmit: async (values) => {
             const response = await dispatch(logIn(values));
-            
-            if (String(response.payload).startsWith("Email")) {
+
+            if (String(response.payload).startsWith('Email')) {
                 const timeout = setTimeout(() => {
                     router.replace('/verify');
                 }, 200);
@@ -122,9 +124,13 @@ const Login = () => {
                         </Button>
                         <Grid container>
                             <Grid item xs>
-                                <Link href="#">
-                                    <Typography variant="body2">Quên mật khẩu</Typography>
-                                </Link>
+                                <Typography
+                                    variant="body2"
+                                    sx={{ cursor: "pointer" }}
+                                    onClick={() => setOpenForgotPassword(true)}
+                                >
+                                    Quên mật khẩu
+                                </Typography>
                             </Grid>
                             <Grid item>
                                 <Link href="/register">
@@ -162,6 +168,12 @@ const Login = () => {
                 </Box>
                 <Copyright sx={{ mt: 8, mb: 4 }} />
             </Container>
+            {openForgotPassword && (
+                <ForgotPassword
+                    isOpen={openForgotPassword}
+                    handleClose={() => setOpenForgotPassword(false)}
+                />
+            )}
         </>
     );
 };

@@ -7,6 +7,7 @@ export * from './PromotionComponent';
 export * from './CardComponent';
 export * from './ShopServicesComponent';
 export * from './SilderProductCompoment'
+export * from './SelectAddressCompoment'
 
 export { ProductDetail } from './ProductDetails/ProductDetail';
 export * from './StarRate/StarRate';

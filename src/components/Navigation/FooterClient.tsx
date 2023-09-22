@@ -45,7 +45,7 @@ export const FooterClient = () => {
                     rowSpacing={3}
                     sx={{
                         width: { xs: '390px', lg: '1200px', sm: '768px', md: '960px' },
-                        marginTop: '30px',
+                        // marginTop: '30px',
                     }}
                 >
                     <Grid item xs={12} lg={3} sm={6}>

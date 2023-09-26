@@ -1,12 +1,6 @@
-'use client'
+'use client';
 
-import React, {
-    useState,
-    SyntheticEvent,
-    useRef,
-    useEffect,
-    KeyboardEvent,
-} from 'react';
+import React, { useState, SyntheticEvent, useRef, useEffect, KeyboardEvent } from 'react';
 import { KeyboardArrowRight } from '@mui/icons-material';
 import {
     Box,
@@ -19,6 +13,7 @@ import {
     Popper,
     useTheme,
 } from '@mui/material';
+import { CategorySelecting } from '@interfaces/product';
 
 interface Props {
     title: string;
@@ -27,11 +22,7 @@ interface Props {
         value: string;
         chosen: boolean;
     }>;
-    caseExp: string;
-    handleSelectCategory: (
-        cat: string[],
-        caseExp: string,
-    ) => void;
+    handleSelectCategory: (cat: CategorySelecting[]) => void;
 }
 
 const FilterCard = (props: Props) => {
@@ -73,36 +64,37 @@ const FilterCard = (props: Props) => {
 
     const handlePassValue = (arrayObj: typeof props.categories) => {
         const arraySelected: string[] = [];
-        arrayObj.forEach(item => {
-            if(item.chosen) {
+        arrayObj.forEach((item) => {
+            if (item.chosen) {
                 arraySelected.push(item.value);
             }
-        })
+        });
         return arraySelected;
-    }
+    };
 
     const handleSelect = (event: any, choose: boolean) => {
         const {
             currentTarget: { value },
-          } = event;
-        setSelected(selected.map(item => {
-            if (item.key === value) {
-                return {...item, chosen: !choose };
-            }
-            else {
-                return item;
-            }
-        }));
+        } = event;
+        setSelected(
+            selected.map((item) => {
+                if (item.key === value) {
+                    return { ...item, chosen: !choose };
+                } else {
+                    return item;
+                }
+            }),
+        );
     };
 
     useEffect(() => {
-        const selectedCat: string[] = handlePassValue(selected);
-        props.handleSelectCategory(selectedCat, props.caseExp);
+        //const selectedCat: string[] = handlePassValue(selected);
+        props.handleSelectCategory(selected);
     }, [selected]);
 
     return (
         <>
-            <Box marginRight='10px'>
+            <Box marginRight="10px">
                 <Button
                     endIcon={<KeyboardArrowRight />}
                     ref={anchorRef}
@@ -147,39 +139,46 @@ const FilterCard = (props: Props) => {
                                         id="composition-menu"
                                         aria-labelledby="composition-button"
                                         onKeyDown={handleListKeyDown}
-                                        sx={{ display: 'flex', flexWrap: 'wrap', padding: '10px', width: '350px', }}
+                                        sx={{
+                                            display: 'flex',
+                                            flexWrap: 'wrap',
+                                            padding: '10px',
+                                            width: '350px',
+                                        }}
                                     >
-                                            {selected.map((item) => (
-                                                <MenuItem
-                                                    key={item.key}
-                                                    sx={{ display: '', margin: 0, padding: 0 }}
+                                        {selected.map((item) => (
+                                            <MenuItem
+                                                key={item.key}
+                                                sx={{ display: '', margin: 0, padding: 0 }}
+                                            >
+                                                <Button
+                                                    value={item.key}
+                                                    sx={{
+                                                        position: 'relative',
+                                                        display: 'flex',
+                                                        backgroundColor: '#f3f4f6 !important',
+                                                        border: '1px solid #e5e7eb',
+                                                        borderRadius: '10px',
+                                                        color: '#444',
+                                                        fontSize: '12px',
+                                                        height: '34px',
+                                                        margin: '0 10px 10px 0',
+                                                        padding: '5px 10px',
+                                                        whiteSpace: 'nowrap',
+                                                        ...(item.chosen === true && {
+                                                            backgroundColor: '#fef2f2 !important',
+                                                            border: `1px solid ${theme.color.red} !important`,
+                                                            color: theme.color.red + '!important',
+                                                        }),
+                                                    }}
+                                                    onClick={(event) =>
+                                                        handleSelect(event, item.chosen)
+                                                    }
                                                 >
-                                                    <Button
-                                                        value={item.key}
-                                                        sx={{
-                                                            position: 'relative',
-                                                            display: 'flex',
-                                                            backgroundColor: '#f3f4f6 !important',
-                                                            border: '1px solid #e5e7eb',
-                                                            borderRadius: '10px',
-                                                            color: '#444',
-                                                            fontSize: '12px',
-                                                            height: '34px',
-                                                            margin: '0 10px 10px 0',
-                                                            padding: '5px 10px',
-                                                            whiteSpace: 'nowrap',
-                                                            ...(item.chosen === true && {
-                                                                backgroundColor: '#fef2f2 !important',
-                                                                border: `1px solid ${theme.color.red} !important`,
-                                                                color: theme.color.red + '!important',
-                                                            }),
-                                                        }}
-                                                        onClick={(event) => handleSelect(event, item.chosen)}
-                                                    >
-                                                        {item.value}
-                                                    </Button>
-                                                </MenuItem>
-                                            ))}
+                                                    {item.value}
+                                                </Button>
+                                            </MenuItem>
+                                        ))}
                                     </MenuList>
                                 </ClickAwayListener>
                             </Paper>

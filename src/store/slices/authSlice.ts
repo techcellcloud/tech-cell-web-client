@@ -1,7 +1,7 @@
 import { IAuthSlice, ILogin, IRegister, IVerifyEmail } from '@interfaces/auth';
 import { Dispatch, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { VerifyEmailModel } from 'models';
-import { fetchLogin, fetchRegister, fetchVerifyEmail } from 'services/AuthService';
+import { VerifyEmailModel } from '@models/Auth';
+import { fetchLogin, fetchRegister, fetchVerifyEmail } from '@services/AuthService';
 
 export const logIn = createAsyncThunk('auth/login', async(loginData: ILogin, { rejectWithValue }) => {
     try {

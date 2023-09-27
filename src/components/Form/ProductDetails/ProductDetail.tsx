@@ -20,6 +20,8 @@ import { SalientFeatures } from './SalientFeatures';
 import '../../../styles/components/modal.module.scss';
 import { SliderProduct } from '../SilderProductCompoment';
 import { DialogProdutDetail } from '../Common/DialogProductDetail';
+import { useParams } from 'next/navigation';
+
 
 export interface DialogTitleProps {
     id: string;
@@ -28,6 +30,7 @@ export interface DialogTitleProps {
 }
 
 export const ProductDetail = () => {
+    
     const [showDialog, setShowDialog] = useState(false);
     return (
         <>
@@ -117,7 +120,7 @@ export const ProductDetail = () => {
                             {/* Btn thêm sản phẩm và mua sản phẩm */}
                             <div className={styles.btn_cart}>
                                 <a href="#" className={styles.add_cart}>
-                                    Thêm giỏi hàng
+                                    Thêm giỏ hàng
                                 </a>
                                 <a href="#" className={styles.buy_now}>
                                     Mua Ngay

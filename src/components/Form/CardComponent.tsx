@@ -25,7 +25,7 @@ const CardComponent: FC<ProductDataProps> = ({ initialData }) => {
     return (
         <div className={styles.product}>
             <div className={styles.productInfoContainer}>
-                <Link href="/productdetail">
+                <Link href={`/productdetail/${initialData.id}`}>
                     <div className={styles.productInfo}>
                         <div className={styles.productImgContent}>
                             <div className={styles.productImgitem}>
@@ -53,7 +53,7 @@ const CardComponent: FC<ProductDataProps> = ({ initialData }) => {
                         </div>
                         <div className={styles.productContentpromotion}>
                             <div className={styles.productPromotion}>
-                                <p>Tặng thêm dịch vụ bảo hành Vip 12 tháng 1 đổi 1</p>
+                                <p>Khuyến mãi</p>
                             </div>
                         </div>
                         <div className={styles.productRating}>

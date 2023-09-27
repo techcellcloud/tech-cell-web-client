@@ -7,6 +7,7 @@ export * from './SearchComponent';
 export * from './CardComponent';
 export * from './ShopServicesComponent';
 export * from './SilderProductCompoment'
+export * from './AutoCompleteCustom'
 
 export { ProductDetail } from './ProductDetails/ProductDetail';
 export * from './StarRate/StarRate';

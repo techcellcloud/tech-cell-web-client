@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Link, Stack } from '@mui/material';
 import Image from 'next/image';
 import { NAV_ITEMS } from '@constants/NavContants';
-import { AccordionComponent, MenuComponent } from '@components/Form';
+import { AccordionComponent } from '@components/Form';
 
 interface Props {
     handleDrawerToggle: () => void;

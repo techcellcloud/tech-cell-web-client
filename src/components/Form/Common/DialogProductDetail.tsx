@@ -8,7 +8,9 @@ import DialogActions from '@mui/material/DialogActions';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import styles from '@styles/components/modal.module.scss';
-import { Table, TableRow, TableCell } from '@mui/material';
+import { Table } from '@mui/material';
+import { TableRow } from '@mui/material';
+import { TableCell } from '@mui/material';
 
 interface Props {
     isOpen: boolean;

@@ -1,33 +1,25 @@
 /** @type {import('next').NextConfig} */
-const path = require("path");
+const path = require('path');
 
 const nextConfig = {
-  sassOptions: {
-    includePaths: [path.join(__dirname, "styles")],
-  },
-  images: {
-    domains: ['res.cloudinary.com'],
-  },
-  env: {
-    API_ENDPOINT: process.env.API_BASE_URL,
-  },
-  modularizeImports: {
-    '@mui/icons-material': {
-      transform: '@mui/icons-material/{{member}}',
+    sassOptions: {
+        includePaths: [path.join(__dirname, "styles")],
     },
-    // '@mui/material': {
-    //   transform: '{{#if (eq member "useTheme")}}@components/Theme/useTheme{{else}}@mui/material/{{member}}{{/if}}',
-    // },
-  },
+    images: {
+        domains: ['res.cloudinary.com'],
+    },
+    env: {
+        API_ENDPOINT: process.env.API_BASE_URL,
+    },
 
-  webpack(config) {
-    config.module.rules.push({
-      test: /\.svg$/,
-      use: [{ loader: '@svgr/webpack', options: { icon: true } }],
-    });
+    webpack(config) {
+        config.module.rules.push({
+            test: /\.svg$/,
+            use: [{ loader: '@svgr/webpack', options: { icon: true } }],
+        });
 
-    return config;
-  },
+        return config;
+    },
 };
 
 module.exports = nextConfig;

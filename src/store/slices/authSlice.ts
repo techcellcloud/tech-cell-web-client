@@ -1,7 +1,7 @@
-import { IAuthSlice, ILogin, IRegister, IVerifyEmail } from '@interfaces/auth';
+import { IAuthSlice, ICart, ILogin, IRegister } from '@interfaces/auth';
 import { Dispatch, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { VerifyEmailModel } from '@models/Auth';
-import { fetchLogin, fetchRegister, fetchVerifyEmail } from '@services/AuthService';
+import { VerifyEmailModel } from 'models';
+import { fetchLogin, fetchRegister, fetchVerifyEmail, ftechAddToCart } from 'services/AuthService';
 
 export const logIn = createAsyncThunk('auth/login', async(loginData: ILogin, { rejectWithValue }) => {
     try {
@@ -21,6 +21,15 @@ export const logIn = createAsyncThunk('auth/login', async(loginData: ILogin, { r
         }
     }
 });
+
+export const addToCart = createAsyncThunk('auth/carts', async (cartData:ICart, { rejectWithValue }) => {
+    try {
+      const response = await ftechAddToCart();
+      return response.data
+    } catch (error:any) {
+      return rejectWithValue(error.message);
+    }
+  });
 
 export const register = createAsyncThunk('auth/register', async(registerData: IRegister, { rejectWithValue }) => {
     try {
@@ -51,12 +60,16 @@ export const verifyEmail = createAsyncThunk('auth/verify-email', async(verifyDat
     }
 });
 
+
+
 const initialState: IAuthSlice = {
     user: null,
     isLoading: false,
     isAuthenticated: false,
     isError: false,
     message: '',
+    item:[],
+    status:null,
 }
 
 export const authSlice = createSlice({
@@ -131,7 +144,19 @@ export const authSlice = createSlice({
                 else {
                     state.message = 'Hệ thống có lỗi xảy ra';
                 }
-            });
+            })
+
+            
+            .addCase(addToCart.pending,(state) =>{
+                state.isLoading =true
+            })
+            .addCase(addToCart.fulfilled,(state,action) =>{
+                state.item = action.payload;
+                state.message = 'fulfilled';
+            })
+            .addCase(addToCart.rejected,(state) =>{
+                state.message = 'fulfilled';
+            })
     }
 });
 

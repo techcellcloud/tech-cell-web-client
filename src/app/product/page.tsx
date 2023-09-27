@@ -2,19 +2,17 @@
 
 import { BreadCrumbs } from '@components/Layout';
 import { Percent, Visibility, Search } from '@mui/icons-material';
-import {
-    Container,
-    Box,
-    Paper,
-    Stack,
-    styled,
-    Typography,
-    ToggleButtonGroup,
-    ToggleButton,
-    Chip,
-    IconButton,
-} from '@mui/material';
-import React, { useState, MouseEvent, } from 'react';
+import { Container } from '@mui/material';
+import { Box } from '@mui/material';
+import { Paper } from '@mui/material';
+import { Stack } from '@mui/material';
+import { styled } from '@mui/material';
+import { Typography } from '@mui/material';
+import { ToggleButtonGroup } from '@mui/material';
+import {  ToggleButton } from '@mui/material';
+import {  Chip } from '@mui/material';
+import {  IconButton } from '@mui/material';
+import React, { useState, MouseEvent } from 'react';
 import { BRANDS, DETAIL_CATEGORIES } from '@constants/PhoneConstant';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -89,10 +87,7 @@ const Product = () => {
         exclusive: true,
     };
 
-    const handleSelectCategory = (
-        cat: string[],
-        caseExp: string,
-    ) => {
+    const handleSelectCategory = (cat: string[], caseExp: string) => {
         switch (caseExp) {
             case 'mobile-type':
                 setMobileType(cat);

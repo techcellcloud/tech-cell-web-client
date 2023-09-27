@@ -5,9 +5,10 @@ import {
     REFRESH_TOKEN_ENDPOINT,
     VERIFY_EMAIL_ENDPOINT,
     FORGOT_PASSWORD,
-    VERIFY_FORGOT_PASSWORD
+    VERIFY_FORGOT_PASSWORD,
+    ADD_TO_CART
 } from '@constants/Services';
-import { ILogin, IRegister, IVerifyEmail } from '@interfaces/auth';
+import { ILogin, IRegister } from '@interfaces/auth';
 import { ForgotPasswordModel, VerifyEmailModel } from 'models';
 
 export const fetchLogin = (payload: ILogin) => instance.post(LOGIN_ENDPOINT, payload);
@@ -24,3 +25,5 @@ export const fetchForgotPassword = (email: string) => instance.post(FORGOT_PASSW
 
 export const fetchVerifyForgotPassword = (payload: ForgotPasswordModel) =>
     instance.post(VERIFY_FORGOT_PASSWORD, payload);
+
+export const ftechAddToCart = () => instance.get(ADD_TO_CART);

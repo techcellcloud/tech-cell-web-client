@@ -6,18 +6,16 @@ import {
     PromotionComponent,
     ShopServicesComponent,
 } from 'components/Form';
-import {
-    Box,
-    Container,
-    Divider,
-    List,
-    ListItemButton,
-    ListItemText,
-    Stack,
-    Typography,
-    styled,
-    useTheme,
-} from '@mui/material';
+import { Box } from '@mui/material';
+import { Container } from '@mui/material';
+import { Divider } from '@mui/material';
+import { List } from '@mui/material';
+import { ListItemButton } from '@mui/material';
+import { ListItemText } from '@mui/material';
+import { Stack } from '@mui/material';
+import { Typography } from '@mui/material';
+import { styled } from '@mui/material';
+import { useTheme } from '@mui/material';
 import Image from 'next/image';
 import { useState, MouseEvent } from 'react';
 import LocalMallIcon from '@mui/icons-material/LocalMall';
@@ -142,7 +140,7 @@ export default function Home() {
                                     background: `linear-gradient(to right, lightGray, ${theme.color.gray} , ${theme.color.red}, ${theme.color.gray}, lightGray)`,
                                 }}
                             />
-                            <PromotionComponent />
+                            {/* <PromotionComponent /> */}
                         </Stack>
                     </Box>
                 </Container>
@@ -160,8 +158,8 @@ export default function Home() {
                     />
                 </Box>
             </Box>
-            <Stack spacing={3} marginTop='20px'>
-                <Container maxWidth='lg'>
+            <Stack spacing={3} marginTop="20px">
+                <Container maxWidth="lg">
                     <Box
                         sx={{
                             marginBottom: '15px',

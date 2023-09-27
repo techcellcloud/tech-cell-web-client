@@ -30,9 +30,15 @@ export interface IUser {
 }
 
 export interface IAuthSlice {
+    item:[];
+    status:null;
     user: IUser | null;
     isLoading: boolean;
     isAuthenticated: boolean;
     isError: boolean;
     message: string | null;
+}
+
+export interface ICart{
+    id:number;
 }

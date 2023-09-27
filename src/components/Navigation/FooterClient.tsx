@@ -2,8 +2,15 @@
 
 import React from 'react';
 import styles from 'styles/components/footer.module.scss';
-import { Box, Container, Grid, Stack, styled, useTheme } from '@mui/material';
-import { LocationOn, Mail, PhoneAndroid } from '@mui/icons-material';
+import { Box } from '@mui/material';
+import { Container } from '@mui/material';
+import { Grid } from '@mui/material';
+import { Stack } from '@mui/material';
+import { styled } from '@mui/material';
+import { useTheme } from '@mui/material';
+import { LocationOn } from '@mui/icons-material';
+import { Mail } from '@mui/icons-material';
+import { PhoneAndroid } from '@mui/icons-material';
 import Image from 'next/image';
 import AppStore from '@public/images/app-store.png';
 import GooglePlay from '@public/images/google-play.png';
@@ -12,17 +19,16 @@ import SocialMedia2 from '@public/images/social-2.png';
 import SocialMedia4 from '@public/images/social-4.png';
 import Link from 'next/link';
 
-const IconContainer =  styled(Box)(() => ({
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "flex-start",
+const IconContainer = styled(Box)(() => ({
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
     '& p': {
-        fontSize: "14px",
+        fontSize: '14px',
     },
-
 }));
 
-const Icon = styled(Box)(({theme}) => ({
+const Icon = styled(Box)(({ theme }) => ({
     width: 32,
     height: 32,
     display: 'flex',
@@ -31,13 +37,13 @@ const Icon = styled(Box)(({theme}) => ({
     justifyContent: 'center',
     backgroundColor: '#777777',
     marginRight: theme.spacing(2),
-    flex: "0 0 32px",
+    flex: '0 0 32px',
 }));
 
 export const FooterClient = () => {
     const { color } = useTheme();
     return (
-        <Box component="footer" sx={{ backgroundColor: '#eaeaea', marginTop: 'auto' }}>
+        <Box component="footer" sx={{ backgroundColor: '#eaeaea', marginTop: '50px' }}>
             <Container maxWidth="lg">
                 <Grid
                     container
@@ -57,9 +63,7 @@ export const FooterClient = () => {
                                         <LocationOn />
                                     </Icon>
                                     <Box>
-                                        <p>
-                                            Hno: 18 Tam Trinh Hoang Mai, Ha Noi
-                                        </p>
+                                        <p>Hno: 18 Tam Trinh Hoang Mai, Ha Noi</p>
                                     </Box>
                                 </IconContainer>
                                 <IconContainer>
@@ -136,7 +140,14 @@ export const FooterClient = () => {
                     </Grid>
                 </Grid>
                 <hr className={styles.footerDivider} />
-                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '50px'}}>
+                <Box
+                    sx={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                        height: '50px',
+                    }}
+                >
                     <span>
                         © TechCell Team VTC, 2023 - <b>Privacy Policy</b>
                     </span>

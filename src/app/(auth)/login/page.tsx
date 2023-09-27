@@ -20,6 +20,7 @@ import {
     Typography,
 } from '@mui/material';
 import { FacebookRounded, Google, PhoneIphone } from '@mui/icons-material';
+import { ToastContainer, toast } from 'react-toastify';
 
 import { Copyright } from '@components/Layout';
 import { useFormik } from 'formik';
@@ -43,20 +44,45 @@ const Login = () => {
         validationSchema: LoginSchema,
         onSubmit: async (values) => {
             const response = await dispatch(logIn(values));
-
-            if (String(response.payload).startsWith('Email')) {
+            if (response.meta.requestStatus === 'fulfilled') {
+                console.log(response.meta);
+                toast.success('Đăng nhập thành công', {
+                    position: 'top-center',
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: 'light',
+                });
                 const timeout = setTimeout(() => {
-                    router.replace('/verify');
-                }, 200);
+                    router.replace('/');
+                }, 5000);
                 return () => {
                     clearTimeout(timeout);
                 };
+                
+            } else {
+                return toast.error('Đăng nhập thất bại !!', {
+                    position: 'top-center',
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: 'light',
+                });
             }
         },
     });
 
     return (
         <>
+
+            <ToastContainer />
+
             <Container component="main" maxWidth="xs">
                 <CssBaseline />
                 <Box

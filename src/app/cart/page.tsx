@@ -1,34 +1,46 @@
 'use client';
 
-import { SelectAddressComponent } from '@components/Form';
-// import { Metadata } from 'next';
-import { useEffect, useState } from 'react';
-import { apiGetPublicDistrics, apiGetPublicProvinces,apiGetPublicWard } from 'services/CartService';
+import { useEffect } from 'react';
+import { useState } from 'react';
+import { getDistricts } from 'services/LocationService';
+import { getProvinces } from 'services/LocationService';
+import { getWards } from 'services/LocationService';
 import styles from '@styles/components/cart.module.scss';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Image from 'next/image';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { Button, Checkbox, FormControlLabel, colors } from '@mui/material';
+import { Button } from '@mui/material';
+import { Checkbox } from '@mui/material';
+import { FormControlLabel } from '@mui/material';
+import { TextField } from '@mui/material';
 import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
-import { pink, red } from '@mui/material/colors';
+import { red } from '@mui/material/colors';
+import { Formik } from 'formik';
+import { Form } from 'formik';
+import { AutocompleteCustom } from '@components/Form';
+import { Districs } from 'models/Location';
+import { Location } from 'models/Location';
+import { Province } from 'models/Location';
+import { Ward } from 'models/Location';
 
 // export const metadata: Metadata = {
 //     title: 'TechCell - Giỏ hàng',
 // };
 
 export default function Page() {
-    const [provinces, setProvinces] = useState([]);
-    const [districts, setdistricts] = useState([]);
-    const [wards, setWards] = useState([]);
-    const [idProvince, setIdProvince] = useState();
-    const [idDistrict, setIdDistrict] = useState();
-    const [idwards, setIdWards] = useState();
+    const [provinces, setProvinces] = useState<Array<Province>>(new Array<Province>());
+    const [districts, setdistricts] = useState<Array<Districs>>(new Array<Districs>());
+    const [wards, setWards] = useState<Array<Ward>>(new Array<Ward>());
 
-    const [checked, setChecked] = useState(false);
-    // const [checkedAll,setCheckAll] = useState(false)
-    // const handleCheckAll = () => {
-    //     setCheckAll(!checked);
-    // }
+    const [checked, setChecked] = useState([true, false]);
+
+    const handleChange1 = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setChecked([event.target.checked, event.target.checked]);
+    };
+
+    const handleChange2 = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setChecked([checked[0], event.target.checked]);
+    };
 
     const [quanity, setQuanity] = useState(1);
     const handleUpquanity = () => {
@@ -43,36 +55,27 @@ export default function Page() {
         }
     };
     useEffect(() => {
-        const fetchPublicProvince = async () => {
-            const response = await apiGetPublicProvinces();
-            console.log(response);
-            setProvinces((response as { data: any; results: any })?.data.results);
-        };
-        fetchPublicProvince();
+        getProvinces().then((response) => {
+            setProvinces((response.data as any).results);
+        });
     }, []);
 
-    useEffect(() => {
-        const fetchPublicDisct = async () => {
-            const response = await apiGetPublicDistrics(idProvince);
-            console.log(response);
-            setdistricts((response as { data: any; results: any })?.data.results);
-        };
+    const getDataDistricts = async (id: number) => {
+        const response = await getDistricts(id);
+        if (response.data) {
+            setdistricts((response.data as any).results);
+        }
+    };
 
-        idProvince && fetchPublicDisct();
-    }, [idProvince]); // Add dependencies array if required
+    const getDataWards = async (id: number) => {
+        const response = await getWards(id);
+        if (response.data) {
+            setWards((response.data as any).results);
+        }
+    };
 
-    useEffect(() => {
-        const ftechPublicWards = async () => {
-            const response = await apiGetPublicWard(idDistrict);
-            console.log(response)
-            setWards((response as { data: any; results: any })?.data.results)
-        };
-        idDistrict && ftechPublicWards();
-    },[idDistrict]);
+    console.log(provinces);
 
-    console.log(idProvince, idDistrict,idwards);
-
-    
     return (
         <>
             <div className={styles.cart_product}>
@@ -91,8 +94,9 @@ export default function Page() {
                                 control={
                                     <Checkbox
                                         defaultChecked
+                                        checked={checked[0] && checked[1]}
                                         // checked={checkedAll}
-                                        // onChange={handleCheckAll}
+                                        onChange={handleChange1}
                                         sx={{
                                             color: red[800],
                                             '&.Mui-checked': {
@@ -112,8 +116,69 @@ export default function Page() {
                                             <Checkbox
                                                 defaultChecked
                                                 // checked={checked[1]}
-                                                // onChange={handleCheckBox}
-                                                onChange={() => setChecked(!checked)}
+                                                checked={checked[1]}
+                                                onChange={handleChange2}
+                                                sx={{
+                                                    color: red[800],
+                                                    '&.Mui-checked': {
+                                                        color: red[600],
+                                                    },
+                                                }}
+                                            />
+                                        </div>
+                                        <Image
+                                            src="/img_productDetail/ip14_2.webp"
+                                            width={80}
+                                            height={80}
+                                            alt="product"
+                                        />
+                                        <div className={styles.product_info}>
+                                            <div className={styles.product_text}>
+                                                <div className={styles.product_heading}>
+                                                    Macbook Air M2 2022 256GB-Xám
+                                                </div>
+                                                <div className={styles.product_price}>
+                                                    <div className={styles.product_price_new}>
+                                                        26.690.000đ
+                                                    </div>
+                                                    <div className={styles.product_price_old}>
+                                                        <span>32.990.000đ</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className={styles.product_quanity}>
+                                                <div
+                                                    className={styles.product_quanity_btn}
+                                                    onClick={handleDownquanity}
+                                                >
+                                                    -
+                                                </div>
+                                                <div className={styles.product_quanity_number}>
+                                                    {quanity}
+                                                </div>
+                                                <div
+                                                    className={styles.product_quanity_btn}
+                                                    onClick={handleUpquanity}
+                                                >
+                                                    +
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div className={styles.product_cart_delete}>
+                                            <DeleteIcon />
+                                        </div>
+                                    </div>
+
+                                    {/*  */}
+
+                                    <div className={styles.product_cart}>
+                                        <div className={styles.product_cart_check}>
+                                            <Checkbox
+                                                defaultChecked
+                                                // checked={checked[1]}
+                                                checked={checked[1]}
+                                                onChange={handleChange2}
                                                 sx={{
                                                     color: red[800],
                                                     '&.Mui-checked': {
@@ -330,27 +395,84 @@ export default function Page() {
                                             Địa chỉ nhận hàng
                                         </div>
                                         <div className={styles.delivery_address_selected}>
-                                            <SelectAddressComponent
-                                                type="province"
-                                                value={idProvince}
-                                                setValue={setIdProvince}
-                                                label={'Chọn Tỉnh Thành Phố'}
-                                                options={provinces}
-                                            />
-                                            <SelectAddressComponent
-                                                type="district"
-                                                value={idDistrict}
-                                                setValue={setIdDistrict}
-                                                label={'Chọn Quận / Huyện'}
-                                                options={districts}
-                                            />
+                                            <Formik
+                                                enableReinitialize
+                                                initialValues={new Location()}
+                                                onSubmit={() => {}}
+                                            >
+                                                {({ isSubmitting, values, setFieldValue }) => (
+                                                    <Form
+                                                        style={{
+                                                            width: '100%',
+                                                            display: 'flex',
+                                                            justifyContent: 'space-between',
+                                                        }}
+                                                    >
+                                                        <AutocompleteCustom
+                                                            label="Chọn Thành Phố"
+                                                            displaySelected="province_name"
+                                                            displayLabel="province_name"
+                                                            name={'province'}
+                                                            options={provinces}
+                                                            handleChange={(value) => {
+                                                                setFieldValue('province', value);
+                                                                setFieldValue('district', null);
+                                                                setFieldValue('ward', null);
+                                                                setdistricts([]);
+                                                                setWards([]);
+                                                                if (
+                                                                    (value as Province)?.province_id
+                                                                ) {
+                                                                    getDataDistricts(
+                                                                        Number(
+                                                                            (value as Province)
+                                                                                .province_id,
+                                                                        ),
+                                                                    );
+                                                                }
+                                                            }}
+                                                        />
 
-                                            <SelectAddressComponent
-                                                type="ward"
-                                                value={idwards}
-                                                setValue={setIdWards}
-                                                label={'Chọn Phường / Xã'}
-                                                options={wards}
+                                                        <AutocompleteCustom
+                                                            label="Chọn Quận / Huyện"
+                                                            displaySelected="district_name"
+                                                            displayLabel="district_name"
+                                                            name={'district'}
+                                                            options={districts}
+                                                            handleChange={(value) => {
+                                                                setFieldValue('district', value);
+                                                                setFieldValue('ward', null);
+                                                                setWards([]);
+                                                                if (
+                                                                    (value as Districs)?.district_id
+                                                                ) {
+                                                                    getDataWards(
+                                                                        Number(
+                                                                            (value as Districs)
+                                                                                .district_id,
+                                                                        ),
+                                                                    );
+                                                                }
+                                                            }}
+                                                        />
+
+                                                        <AutocompleteCustom
+                                                            label="Chọn Thị / Xã"
+                                                            displaySelected="ward_name"
+                                                            displayLabel="ward_name"
+                                                            name={'ward'}
+                                                            options={wards}
+                                                        />
+                                                    </Form>
+                                                )}
+                                            </Formik>
+                                        </div>
+
+                                        <div>
+                                            <TextField
+                                                style={{ width: '100%', marginTop: '20px' }}
+                                                label="Nhập địa chỉ, tên đường"
+                                                variant="outlined"
                                             />
                                         </div>
                                     </div>

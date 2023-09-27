@@ -5,24 +5,18 @@ import Image from 'next/image';
 import StarIcon from '@mui/icons-material/Star';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
-interface Props {
-    image: string;
-    name: string;
-    price: number;
-    star: string;
-    whislist: string;
-}
 
-const CardComponent = () => {
+
+const CardComponent = (props:any) => {
     return (
         <div className={styles.product}>
             <div className={styles.productInfoContainer}>
-                <Link href="/productdetail">
+                <Link href={`/productdetail/${props.id}`}>
                     <div className={styles.productInfo}>
                         <div className={styles.productImgContent}>
                             <div className={styles.productImgitem}>
                                 <Image
-                                    src="/product_img/phone1.webp"
+                                    src={props.img}
                                     width={160}
                                     height={160}
                                     alt="phone1"
@@ -31,21 +25,21 @@ const CardComponent = () => {
                         </div>
                         <div>
                             <h3 className={styles.productNameproduct}>
-                                OPPO Reno8 T 5G (8GB - 128GB)
+                                {props.name}
                             </h3>
                         </div>
                         <div className={styles.productPrice}>
                             <div className={styles.productNewprice}>
-                                9.490.000<sup>đ</sup>
+                                {props.newPrice}<sup>đ</sup>
                             </div>
                             <div className={styles.productOldprice}>
-                                9.990.000
+                                {props.oldPrice}
                                 <sup>đ</sup>
                             </div>
                         </div>
                         <div className={styles.productContentpromotion}>
                             <div className={styles.productPromotion}>
-                                <p>Tặng thêm dịch vụ bảo hành Vip 12 tháng 1 đổi 1</p>
+                                <p>{props.promotion}</p>
                             </div>
                         </div>
                         <div className={styles.productRating}>

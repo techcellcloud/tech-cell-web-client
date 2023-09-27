@@ -11,6 +11,8 @@ const instance: AxiosInstance = axios.create({
     },
 });
 
+
+
 instance.interceptors.request.use(
     (config) => {
         const accessToken = getAccessToken();

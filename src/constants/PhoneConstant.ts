@@ -78,11 +78,6 @@ export const BRANDS = [
     },
 ];
 
-export const ACCESSRORIES = [
-    { label: 'Sạc dự phòng', value: 1, to: '/' },
-    { label: 'Sạc, cáp', value: 2, to: '/' },
-    { label: 'Ốp lưng', value: 3, to: '/' },
-];
 
 export const DETAIL_CATEGORIES = [
     {

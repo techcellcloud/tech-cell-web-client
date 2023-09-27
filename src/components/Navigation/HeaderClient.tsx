@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import React, { useState } from 'react';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import {
     AppBar,
     Box,
@@ -12,6 +13,9 @@ import {
     Toolbar,
     Stack,
     Button,
+    Link,
+    Menu,
+    MenuItem,
 } from '@mui/material';
 import { Menu as MenuIcon, ShoppingCart as ShoppingCartIcon } from '@mui/icons-material';
 import SearchIcon from '@mui/icons-material/Search';
@@ -23,17 +27,28 @@ import Modal from '@mui/material/Modal';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import styles from 'styles/components/button.module.scss';
-import { useAppSelector } from '@store/store';
+import { useAppDispatch, useAppSelector } from '@store/store';
+import { logOut } from '@store/slices/authSlice';
 
 interface Props {
     window?: () => Window;
 }
 
 export const HeaderClient = (props: Props) => {
-    const {user} = useAppSelector((state) => state.auth);
+    const dispatch = useAppDispatch();
+    const { user } = useAppSelector((state) => state.auth);
     const theme = useTheme();
     const { window } = props;
     const [mobileOpen, setMobileOpen] = useState<boolean>(false);
+
+    const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+    const openDrop = Boolean(anchorEl);
+    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+        setAnchorEl(event.currentTarget);
+    };
+    const handleCloseDrop = () => {
+        setAnchorEl(null);
+    };
 
     const handleDrawerToggle = () => {
         setMobileOpen((prevState) => !prevState);
@@ -102,14 +117,16 @@ export const HeaderClient = (props: Props) => {
                             width: { xs: '130px', lg: '150px' },
                         }}
                     >
-                        <Image
-                            src="/logo-white.png"
-                            alt="Logo Techcell"
-                            width={0}
-                            height={0}
-                            sizes="100vw"
-                            style={{ width: '100%', height: 'auto' }}
-                        />
+                        <Link href="/">
+                            <Image
+                                src="/logo-white.png"
+                                alt="Logo Techcell"
+                                width={0}
+                                height={0}
+                                sizes="100vw"
+                                style={{ width: '100%', height: 'auto' }}
+                            />
+                        </Link>
                     </Box>
                     <Stack
                         direction="row"
@@ -129,6 +146,7 @@ export const HeaderClient = (props: Props) => {
                         >
                             {NAV_ITEMS.map((item, i) => (
                                 <MenuComponent
+                                    // userdata={item.}
                                     key={i}
                                     content={item.name}
                                     options={item?.menu}
@@ -136,6 +154,71 @@ export const HeaderClient = (props: Props) => {
                                     href={item.href ? item.href : ''}
                                 />
                             ))}
+
+                            {!user && (
+                                <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                                    <AccountCircleIcon />
+                                    <Link
+                                        href="/login"
+                                        underline="none"
+                                        color="white"
+                                        sx={{ marginLeft: '10px' }}
+                                    >
+                                        Đăng nhập
+                                    </Link>
+                                </Box>
+                            )}
+
+                            {/* <Box sx={{ display: 'flex', alignItems: 'center' }}> */}
+                            {user && (
+                                <>
+                                    <Button
+                                        id="basic-button"
+                                        variant="text"
+                                        aria-controls={open ? 'basic-menu' : undefined}
+                                        aria-haspopup="true"
+                                        aria-expanded={open ? 'true' : undefined}
+                                        onClick={handleClick}
+                                    >
+                                        <Box
+                                            sx={{
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                color: 'white',
+                                            }}
+                                        >
+                                            <AccountCircleIcon />
+                                            {user.firstName}
+                                            {user.lastName}
+                                        </Box>
+                                    </Button>
+
+                                    <Menu
+                                        id="basic-menu"
+                                        anchorEl={anchorEl}
+                                        open={openDrop}
+                                        onClose={handleCloseDrop}
+                                        MenuListProps={{
+                                            'aria-labelledby': 'basic-button',
+                                            style: {
+                                                maxHeight: 300,
+                                                width: '12ch',
+                                            },
+                                        }}
+                                    >
+                                        <MenuItem sx={{ fontSize: '14px', fontWeight: 500 }}>
+                                            <Button
+                                                onClick={() => {
+                                                    dispatch(logOut());
+                                                }}
+                                            >
+                                                <Box sx={{ color: 'white' }}>Đăng Xuất</Box>
+                                            </Button>
+                                        </MenuItem>
+                                    </Menu>
+                                </>
+                            )}
+                            {/* </Box> */}
                         </Box>
                     </Stack>
                     <Box sx={{ display: { xs: 'flex', sm: 'flex', md: 'flex', lg: 'none' } }}>

@@ -1,24 +1,16 @@
-'use client'
+'use client';
 
-import React, {
-    useState,
-    SyntheticEvent,
-    useRef,
-    useEffect,
-    KeyboardEvent,
-} from 'react';
+import React, { useState, SyntheticEvent, useRef, useEffect, KeyboardEvent } from 'react';
 import { KeyboardArrowRight } from '@mui/icons-material';
-import {
-    Box,
-    Button,
-    ClickAwayListener,
-    Grow,
-    MenuItem,
-    MenuList,
-    Paper,
-    Popper,
-    useTheme,
-} from '@mui/material';
+import { Box } from '@mui/material';
+import { Button } from '@mui/material';
+import { ClickAwayListener } from '@mui/material';
+import { Grow } from '@mui/material';
+import { MenuItem } from '@mui/material';
+import { MenuList } from '@mui/material';
+import { Paper } from '@mui/material';
+import { Popper } from '@mui/material';
+import { useTheme } from '@mui/material';
 
 interface Props {
     title: string;
@@ -28,10 +20,7 @@ interface Props {
         chosen: boolean;
     }>;
     caseExp: string;
-    handleSelectCategory: (
-        cat: string[],
-        caseExp: string,
-    ) => void;
+    handleSelectCategory: (cat: string[], caseExp: string) => void;
 }
 
 const FilterCard = (props: Props) => {
@@ -73,26 +62,27 @@ const FilterCard = (props: Props) => {
 
     const handlePassValue = (arrayObj: typeof props.categories) => {
         const arraySelected: string[] = [];
-        arrayObj.forEach(item => {
-            if(item.chosen) {
+        arrayObj.forEach((item) => {
+            if (item.chosen) {
                 arraySelected.push(item.value);
             }
-        })
+        });
         return arraySelected;
-    }
+    };
 
     const handleSelect = (event: any, choose: boolean) => {
         const {
             currentTarget: { value },
-          } = event;
-        setSelected(selected.map(item => {
-            if (item.key === value) {
-                return {...item, chosen: !choose };
-            }
-            else {
-                return item;
-            }
-        }));
+        } = event;
+        setSelected(
+            selected.map((item) => {
+                if (item.key === value) {
+                    return { ...item, chosen: !choose };
+                } else {
+                    return item;
+                }
+            }),
+        );
     };
 
     useEffect(() => {
@@ -102,7 +92,7 @@ const FilterCard = (props: Props) => {
 
     return (
         <>
-            <Box marginRight='10px'>
+            <Box marginRight="10px">
                 <Button
                     endIcon={<KeyboardArrowRight />}
                     ref={anchorRef}
@@ -147,39 +137,46 @@ const FilterCard = (props: Props) => {
                                         id="composition-menu"
                                         aria-labelledby="composition-button"
                                         onKeyDown={handleListKeyDown}
-                                        sx={{ display: 'flex', flexWrap: 'wrap', padding: '10px', width: '350px', }}
+                                        sx={{
+                                            display: 'flex',
+                                            flexWrap: 'wrap',
+                                            padding: '10px',
+                                            width: '350px',
+                                        }}
                                     >
-                                            {selected.map((item) => (
-                                                <MenuItem
-                                                    key={item.key}
-                                                    sx={{ display: '', margin: 0, padding: 0 }}
+                                        {selected.map((item) => (
+                                            <MenuItem
+                                                key={item.key}
+                                                sx={{ display: '', margin: 0, padding: 0 }}
+                                            >
+                                                <Button
+                                                    value={item.key}
+                                                    sx={{
+                                                        position: 'relative',
+                                                        display: 'flex',
+                                                        backgroundColor: '#f3f4f6 !important',
+                                                        border: '1px solid #e5e7eb',
+                                                        borderRadius: '10px',
+                                                        color: '#444',
+                                                        fontSize: '12px',
+                                                        height: '34px',
+                                                        margin: '0 10px 10px 0',
+                                                        padding: '5px 10px',
+                                                        whiteSpace: 'nowrap',
+                                                        ...(item.chosen === true && {
+                                                            backgroundColor: '#fef2f2 !important',
+                                                            border: `1px solid ${theme.color.red} !important`,
+                                                            color: theme.color.red + '!important',
+                                                        }),
+                                                    }}
+                                                    onClick={(event) =>
+                                                        handleSelect(event, item.chosen)
+                                                    }
                                                 >
-                                                    <Button
-                                                        value={item.key}
-                                                        sx={{
-                                                            position: 'relative',
-                                                            display: 'flex',
-                                                            backgroundColor: '#f3f4f6 !important',
-                                                            border: '1px solid #e5e7eb',
-                                                            borderRadius: '10px',
-                                                            color: '#444',
-                                                            fontSize: '12px',
-                                                            height: '34px',
-                                                            margin: '0 10px 10px 0',
-                                                            padding: '5px 10px',
-                                                            whiteSpace: 'nowrap',
-                                                            ...(item.chosen === true && {
-                                                                backgroundColor: '#fef2f2 !important',
-                                                                border: `1px solid ${theme.color.red} !important`,
-                                                                color: theme.color.red + '!important',
-                                                            }),
-                                                        }}
-                                                        onClick={(event) => handleSelect(event, item.chosen)}
-                                                    >
-                                                        {item.value}
-                                                    </Button>
-                                                </MenuItem>
-                                            ))}
+                                                    {item.value}
+                                                </Button>
+                                            </MenuItem>
+                                        ))}
                                     </MenuList>
                                 </ClickAwayListener>
                             </Paper>

@@ -1,8 +1,11 @@
 import React, { FC } from 'react';
-import styles from '@styles/components/product.module.scss';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Star, Favorite} from '@mui/icons-material';
+
+import styles from '@styles/components/product.module.scss';
+
+import StarIcon from '@mui/icons-material/Star';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 import { PriceModel } from '@models/Product';
 import { currencyFormat } from 'utils';
@@ -54,17 +57,17 @@ const CardComponent: FC<ProductDataProps> = ({ initialData }) => {
                             </div>
                         </div>
                         <div className={styles.productRating}>
-                            <Star />
-                            <Star />
-                            <Star />
-                            <Star />
-                            <Star />
+                            <StarIcon />
+                            <StarIcon />
+                            <StarIcon />
+                            <StarIcon />
+                            <StarIcon />
                         </div>
                     </div>
                     <div className={styles.productWishlist}>
                         <span>Yêu thích</span>
                         <div className={styles.productIconheart}>
-                            <Favorite />
+                            <FavoriteIcon />
                         </div>
                     </div>
                 </Link>

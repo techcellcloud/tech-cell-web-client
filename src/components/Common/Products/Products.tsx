@@ -8,9 +8,9 @@ import { Box, Container, Grid, Pagination, Stack } from '@mui/material';
 import CardComponent from '@components/Form/CardComponent';
 import { BreadCrumbs } from '@components/Layout';
 
-import BrandScrolling from '../BrandScrolling';
-import CategorySelect from '../CategorySelect';
-import SortingToolbar from '../SortingToolbar';
+import BrandScrolling from './BrandScrolling';
+import CategorySelect from './CategorySelect';
+import SortingToolbar from './SortingToolbar';
 import styles from '@styles/components/brands.module.scss';
 
 import { Paging } from '@models/Common';

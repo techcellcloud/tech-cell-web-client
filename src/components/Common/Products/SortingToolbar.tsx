@@ -51,7 +51,7 @@ const SortingToolbar: FC<ToolbarProps> = ({ className }) => {
 
     return (
         <>
-            <Box sx={{ padding: '0 !important', marginBottom: '20px' }}>
+            <Box sx={{ padding: '0 !important', margin: '20px 0px' }}>
                 <Stack spacing={2} sx={{ alignItems: 'flex-start', justifyContent: 'center' }}>
                     <Typography variant="h5" fontWeight={600} fontSize={18}>
                         Sắp xếp theo

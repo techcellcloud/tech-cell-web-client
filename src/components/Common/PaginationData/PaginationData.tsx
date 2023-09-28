@@ -1,16 +1,31 @@
-import React, { FC } from 'react';
+import React, { ChangeEvent, FC } from 'react';
 
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import CardComponent from '@components/Form/CardComponent';
+import { PriceModel } from '@models/Product';
 
 interface PaginationProps {
-    initialData: any[];
+    initialData?: {
+        id: string;
+        name: string;
+        category: string;
+        price: PriceModel;
+        image: string;
+    }[];
+    pagingData: {
+        page: number;
+        totalPage: number;
+    };
+    handleChange: (event: ChangeEvent<unknown>, page: number) => void;
 }
 
-const PaginationBar: FC<PaginationProps> = ({ initialData }) => {
+const PaginationData: FC<PaginationProps> = ({ initialData, pagingData, handleChange }) => {
+
+
+
     return (
         <>
             <Stack spacing={3}>
@@ -53,8 +68,8 @@ const PaginationBar: FC<PaginationProps> = ({ initialData }) => {
                                     }}
                                     spacing={5}
                                 >
-                                    {initialData.map((product) => (
-                                        <Grid key={product.id} xs={6} lg={3} md={4}>
+                                    {initialData && initialData.map((product) => (
+                                        <Grid item key={product.id} xs={6} lg={3} md={4}>
                                             <CardComponent initialData={product} />
                                         </Grid>
                                     ))}
@@ -63,10 +78,10 @@ const PaginationBar: FC<PaginationProps> = ({ initialData }) => {
                         </Box>
                     </Box>
                 </Box>
-                <Pagination shape="rounded" />
+                <Pagination shape="rounded" onChange={handleChange} page={pagingData.page + 1} count={pagingData.totalPage} />
             </Stack>
         </>
     );
 };
 
-export default PaginationBar;
+export default PaginationData;

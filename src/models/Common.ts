@@ -11,8 +11,8 @@ export class Paging {
 }
 
 export class PagingResponse {
-    page: number | string = '';
-    pageSize: number | string = '';
-    totalPage: number | string = '';
-    totalRecord: number | string = '';
+    page: number = 0;
+    pageSize: number = 0;
+    totalPage: number = 0;
+    totalRecord: number = 0;
 }

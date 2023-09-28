@@ -13,20 +13,20 @@ export class PriceModel {
 }
 
 export class VariationModel {
-  attributes?: Array<AttributeDynamics> = new Array<AttributeDynamics>();
-  stock?: number | null = null;
+  attributes: Array<AttributeDynamics> = new Array<AttributeDynamics>();
+  stock: number | null = null;
   price: PriceModel = new PriceModel();
-  images?: Array<ImageModel> = new Array<ImageModel>();
-  status?: string | number | null = null;
-  sku?: string | null = null;
+  images: Array<ImageModel> = new Array<ImageModel>();
+  status: string | number | null = null;
+  sku: string | null = null;
 }
 
 export class ImageModel {
-  publicId?: string | null = null;
-  url?: string | null = null;
-  isThumbnail?: boolean = false;
-  isPlaceholder?: boolean = false;
-  isDeleted?: boolean = false;
+  publicId: string | null = null;
+  url: string | null = null;
+  isThumbnail: boolean = false;
+  isPlaceholder: boolean = false;
+  isDeleted: boolean = false;
 }
 
 export class ProductRequest {

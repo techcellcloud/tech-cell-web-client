@@ -8,3 +8,18 @@ export const REFRESH_TOKEN_ENDPOINT = "/auth/refresh-token";
 export const FORGOT_PASSWORD = "/auth/forgot-password";
 export const VERIFY_FORGOT_PASSWORD = "/auth/verify-forgot-password";
 export const ADD_TO_CART = "auth/carts";
+
+// Management Account
+export const USERS_ENDPOINT = "/users";
+
+// Management Product
+export const PRODUCTS_ENDPOINT = "/products";
+
+// Categories
+export const CATEGORIES_ENDPOINT = "/categories";
+
+// Attributes
+export const ATTRIBUTES_ENDPOINT = "/attributes";
+
+// Images
+export const IMAGES_ENDPOINT = "/images";

@@ -24,8 +24,9 @@
       "@public/*": ["../public/*"],
       "@styles/*": ["styles/*"],
       "@components/*": ["components/*"],
+      "@models/*": ["models/*"],
       "@store/*": ["store/*"],
-      "@service/*": ["service/*"],
+      "@services/*": ["services/*"],
       "@constants/*": ["constants/*"],
       "@interfaces/*": ["interfaces/*"],
     }

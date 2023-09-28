@@ -58,4 +58,30 @@ export const theme: Theme = createTheme({
         fontFamily: ['Montserrat', 'sans-serif'].join(','),
     },
     spacing: 5,
+    components: {
+        MuiFormControl: {
+            variants: [
+                {
+                    props: { variant: 'standard' },
+                    style: {
+                        '& .MuiInput-underline:hover:not(.Mui-disabled):before': {
+                            borderColor: '#ee4949',
+                        },
+                    },
+                },
+            ],
+        },
+        MuiInput: {
+            styleOverrides: {
+                root: {
+                    '&:before': {
+                        borderColor: '#ee4949',
+                    },
+                    '&:after': {
+                        borderColor: '#ee4949',
+                    },
+                },
+            },
+        },
+    },
 });

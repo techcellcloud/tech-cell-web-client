@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from 'react';
 import { product } from './product';
 import styles from '../../../styles/components/productdetail.module.scss';

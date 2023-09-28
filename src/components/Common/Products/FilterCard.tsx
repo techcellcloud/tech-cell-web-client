@@ -2,15 +2,18 @@
 
 import React, { useState, SyntheticEvent, useRef, useEffect, KeyboardEvent } from 'react';
 import { KeyboardArrowRight } from '@mui/icons-material';
-import { Box } from '@mui/material';
-import { Button } from '@mui/material';
-import { ClickAwayListener } from '@mui/material';
-import { Grow } from '@mui/material';
-import { MenuItem } from '@mui/material';
-import { MenuList } from '@mui/material';
-import { Paper } from '@mui/material';
-import { Popper } from '@mui/material';
-import { useTheme } from '@mui/material';
+import {
+    Box,
+    Button,
+    ClickAwayListener,
+    Grow,
+    MenuItem,
+    MenuList,
+    Paper,
+    Popper,
+    useTheme,
+} from '@mui/material';
+import { CategorySelecting } from '@interfaces/product';
 
 interface Props {
     title: string;
@@ -19,8 +22,7 @@ interface Props {
         value: string;
         chosen: boolean;
     }>;
-    caseExp: string;
-    handleSelectCategory: (cat: string[], caseExp: string) => void;
+    handleSelectCategory: (cat: CategorySelecting[]) => void;
 }
 
 const FilterCard = (props: Props) => {
@@ -86,8 +88,8 @@ const FilterCard = (props: Props) => {
     };
 
     useEffect(() => {
-        const selectedCat: string[] = handlePassValue(selected);
-        props.handleSelectCategory(selectedCat, props.caseExp);
+        //const selectedCat: string[] = handlePassValue(selected);
+        props.handleSelectCategory(selected);
     }, [selected]);
 
     return (

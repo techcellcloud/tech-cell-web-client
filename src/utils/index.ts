@@ -1,5 +1,7 @@
+import { ProductStatus } from '@constants/enum';
 import { IUser } from '@interfaces/auth'
 import jwtDecode, { JwtPayload } from "jwt-decode";
+import { ImageModel } from '@models/Product';
 
 // get information from local storage
 export const getCurrentUserId = () => {
@@ -118,3 +120,47 @@ export const isRoleAccepted = (role?: string): boolean => {
       return false;
   }
 };
+
+// get status product
+const productStatusMapping: { [key: number]: string } = {
+  [ProductStatus.ComingSoon]: "Sắp ra mắt",
+  [ProductStatus.NewArrival]: "Hàng mới về",
+  [ProductStatus.Pre_order]: "Đặt hàng trước",
+  [ProductStatus.OnSales]: "Đang bán",
+  [ProductStatus.Hide]: "Ẩn",
+  [ProductStatus.NotSales]: "Không bán",
+  [ProductStatus.LowStock]: "Còn ít hàng",
+  [ProductStatus.TemporarilyOutOfStock]: "Tạm thời hết hàng",
+};
+
+//get thumbnail image
+export const getThumbnail = (images: ImageModel[]) => {
+  let thumbnail = '';
+
+  if (images.length === 0) {
+      thumbnail = '/product_img/phone1.webp';
+  }
+
+  images.forEach((image) => {
+      if (image.isThumbnail) {
+          thumbnail = image.url ? image.url : '/product_img/phone1.webp';
+      }
+  });
+
+  return thumbnail;
+};
+
+//format currency
+export const currencyFormat = (price: number | null): string => {
+  if (typeof price !== 'number') {
+    throw new Error('Invalid input. Please provide a number.');
+  }
+
+  // Convert the number to a string
+  const numberString: string = price.toString();
+
+  // Format the integer part with dots every three digits
+  const formattedIntegerPart: string = numberString.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+
+  return formattedIntegerPart;
+}

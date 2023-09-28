@@ -3,7 +3,7 @@ export * from './BrandCategoryCompoment';
 export * from './CarouselComponent';
 export * from './MenuComponent';
 export * from './SearchComponent';
-export * from './PromotionComponent';
+//export * from './PromotionComponent';
 export * from './CardComponent';
 export * from './ShopServicesComponent';
 export * from './SilderProductCompoment'

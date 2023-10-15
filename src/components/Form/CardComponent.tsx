@@ -25,7 +25,7 @@ const CardComponent: FC<ProductDataProps> = ({ initialData }) => {
     return (
         <div className={styles.product}>
             <div className={styles.productInfoContainer}>
-                <Link href={`/productdetail/${initialData.id}`}>
+                <Link href={`/chi-tiet-san-pham/${initialData.id}`}>
                     <div className={styles.productInfo}>
                         <div className={styles.productImgContent}>
                             <div className={styles.productImgitem}>

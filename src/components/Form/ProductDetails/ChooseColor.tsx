@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { product } from './product';
 import styles from '../../../styles/components/productdetail.module.scss';
 
-export const ChosseColor = () => {
+const ChooseColor = () => {
     // xử lý click border ở phẩn chọn màu sản phẩm
     const [selectedImg, setSelectedImg] = useState(product.colorImgs[0].color_product_img);
     return (
@@ -34,3 +34,5 @@ export const ChosseColor = () => {
         </>
     );
 };
+
+export default ChooseColor;

@@ -13,3 +13,15 @@ export interface ProductLabel {
     price: PriceModel;
     image: string;
 }
+
+export interface VariantStorage {
+    storage: string;
+    outOfStock: boolean;
+    price: PriceModel;
+}
+
+export interface VariantInfo {
+    storage: string;
+    color: string;
+    price: PriceModel;
+}

@@ -1,49 +1,37 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Table } from '@mui/material';
-import { TableRow } from '@mui/material';
-import { TableCell } from '@mui/material';
+import TableRow from '@mui/material/TableRow';
+import TableCell from '@mui/material/TableCell';
+import { AttributeDynamics } from '@models/Attribute';
 
-export const Specification = () => {
+interface TechnologyInformation {
+    techInfo: AttributeDynamics[];
+}
+
+export const Specification: FC<TechnologyInformation> = ({ techInfo }) => {
+
+    const getTechInfo = (attributes: AttributeDynamics[], fieldsToRemove: string[]) => {
+        return attributes.filter(attribute => !fieldsToRemove.includes(attribute.k));
+    }
+
+    const info = getTechInfo(techInfo, ['brand', 'brand_country', 'model', 'origin']);
+
+    console.log(info);
+
     return (
         <>
             <Table>
-                <TableRow>
-                    <TableCell>Màn hình</TableCell>
-                    <TableCell>
-                        6.7 inch, Super Retina XDR, 2796 x 1290 Pixels6.7 inch, Super Retina XDR,
-                        2796 x 1290 Pixels
-                    </TableCell>
-                </TableRow>
+                {info.map(attribute => {
+                    const name = attribute.name[0].toUpperCase() + attribute.name.slice(1);
 
-                <TableRow>
-                    <TableCell>Màn hình</TableCell>
-                    <TableCell>6.7 inch, Super Retina XDR, 2796 x 1290 Pixels</TableCell>
-                </TableRow>
-
-                <TableRow>
-                    <TableCell>Màn hình</TableCell>
-                    <TableCell>6.7 inch, Super Retina XDR, 2796 x 1290 Pixels</TableCell>
-                </TableRow>
-
-                <TableRow>
-                    <TableCell>Màn hình</TableCell>
-                    <TableCell>6.7 inch, Super Retina XDR, 2796 x 1290 Pixels</TableCell>
-                </TableRow>
-
-                <TableRow>
-                    <TableCell>Màn hình</TableCell>
-                    <TableCell>6.7 inch, Super Retina XDR, 2796 x 1290 Pixels</TableCell>
-                </TableRow>
-
-                <TableRow>
-                    <TableCell>Màn hình</TableCell>
-                    <TableCell>6.7 inch, Super Retina XDR, 2796 x 1290 Pixels</TableCell>
-                </TableRow>
-
-                <TableRow>
-                    <TableCell>Màn hình</TableCell>
-                    <TableCell>6.7 inch, Super Retina XDR, 2796 x 1290 Pixels</TableCell>
-                </TableRow>
+                    return (
+                    <TableRow key={attribute.k}>
+                        <TableCell>{name}</TableCell>
+                        <TableCell>
+                            {attribute.v}
+                        </TableCell>
+                    </TableRow>
+                )})}
             </Table>
         </>
     );

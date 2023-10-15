@@ -6,6 +6,7 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import CardComponent from '@components/Form/CardComponent';
 import { PriceModel } from '@models/Product';
+import { theme } from '@components/Theme';
 
 interface PaginationProps {
     initialData?: {
@@ -23,9 +24,6 @@ interface PaginationProps {
 }
 
 const PaginationData: FC<PaginationProps> = ({ initialData, pagingData, handleChange }) => {
-
-
-
     return (
         <>
             <Stack spacing={3}>
@@ -68,17 +66,36 @@ const PaginationData: FC<PaginationProps> = ({ initialData, pagingData, handleCh
                                     }}
                                     spacing={5}
                                 >
-                                    {initialData && initialData.map((product) => (
-                                        <Grid item key={product.id} xs={6} lg={3} md={4}>
-                                            <CardComponent initialData={product} />
-                                        </Grid>
-                                    ))}
+                                    {initialData &&
+                                        initialData.map((product) => (
+                                            <Grid item key={product.id} xs={6} lg={3} md={4}>
+                                                <CardComponent initialData={product} />
+                                            </Grid>
+                                        ))}
                                 </Grid>
                             </Box>
                         </Box>
                     </Box>
                 </Box>
-                <Pagination shape="rounded" onChange={handleChange} page={pagingData.page + 1} count={pagingData.totalPage} />
+                <Pagination
+                    sx={{
+                        '& .MuiButtonBase-root': {
+                            backgroundColor: `#f3f4f6 !important`,
+                        },
+                        '& .Mui-selected': {
+                            backgroundColor: `${theme.color.red} !important`,
+                            color: 'white',
+                        },
+                        '& .MuiPaginationItem-previousNext': {
+                            backgroundColor: `${theme.color.red} !important`,
+                            color: 'white',
+                        },
+                    }}
+                    shape="rounded"
+                    onChange={handleChange}
+                    page={pagingData.page + 1}
+                    count={pagingData.totalPage}
+                />
             </Stack>
         </>
     );

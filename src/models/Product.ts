@@ -7,14 +7,14 @@ export class PagingProduct extends Paging {
 }
 
 export class PriceModel {
-  base: number | null = null;
-  sale: number | null = null;
+  base: number = 0;
+  sale: number = 0;
   special: number | null = null;
 }
 
 export class VariationModel {
   attributes: Array<AttributeDynamics> = new Array<AttributeDynamics>();
-  stock: number | null = null;
+  stock: number = 0;
   price: PriceModel = new PriceModel();
   images: Array<ImageModel> = new Array<ImageModel>();
   status: string | number | null = null;
@@ -22,16 +22,16 @@ export class VariationModel {
 }
 
 export class ImageModel {
-  publicId: string | null = null;
-  url: string | null = null;
+  publicId: string = "";
+  url: string = "";
   isThumbnail: boolean = false;
-  isPlaceholder: boolean = false;
-  isDeleted: boolean = false;
+  isPlaceholder?: boolean = false;
+  isDeleted?: boolean = false;
 }
 
 export class ProductRequest {
   name: string | null = null;
-  description: string | null = "";
+  description: string = "";
   status: number | null = null;
   category: CategoryModel = new CategoryModel();
   generalAttributes: Array<AttributeDynamics> = new Array<AttributeDynamics>();

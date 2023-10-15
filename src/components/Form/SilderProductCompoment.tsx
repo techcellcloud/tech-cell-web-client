@@ -45,7 +45,7 @@ function SamplePrevArrow(props: any) {
     );
 }
 
-export function SliderProduct() {
+export const SliderProduct = () => {
     const settings = {
         dots: true,
         infinite: true,

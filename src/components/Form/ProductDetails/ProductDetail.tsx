@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 
-import '../../../styles/components/modal.module.scss';
+import '@styles/components/modal.module.scss';
 import styles from '@styles/components/productdetail.module.scss';
 
 import Link from 'next/link';
@@ -13,16 +13,13 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import { useTheme } from '@mui/material';
 
-import { product as productDemo } from './product';
 import { StarRateComponent } from '../StarRate/StarRate';
 import { SliderImgProductDetail } from './SliderImg';
 import ChooseProduct from './ChooseProduct';
-import ChooseColor from './ChooseColor';
 import { EndowProduct } from './EndowProduct';
 import { BundleProduct } from './BundleProduct';
 import { SalientFeatures } from './SalientFeatures';
 import { Specification } from './Specification';
-import { SliderProduct } from '../SilderProductCompoment';
 
 import LoadingSection from '@components/Common/Display/LoadingSection';
 
@@ -155,7 +152,7 @@ export const ProductDetail = ({ id }: { id: string }) => {
                             </div>
 
                             {/* Thông tin sản phẩm */}
-                            <p className={styles.product_desc}>{productDemo.desc}</p>
+                            <p className={styles.product_desc}></p>
                             {/* Chọn sản phẩm */}
                             <ChooseProduct
                                 variations={productDetail.variations}

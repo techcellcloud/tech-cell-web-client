@@ -1,7 +1,7 @@
 import { IAuthSlice, ICart, ILogin, IRegister } from '@interfaces/auth';
 import { Dispatch, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { VerifyEmailModel } from 'models';
-import { fetchLogin, fetchRegister, fetchVerifyEmail, ftechAddToCart } from 'services/AuthService';
+import { fetchLogin, fetchRegister, fetchVerifyEmail, fetchAddToCart } from 'services/AuthService';
 
 export const logIn = createAsyncThunk('auth/login', async(loginData: ILogin, { rejectWithValue }) => {
     try {
@@ -24,28 +24,28 @@ export const logIn = createAsyncThunk('auth/login', async(loginData: ILogin, { r
 
 export const addToCart = createAsyncThunk('auth/carts', async (cartData:ICart, { rejectWithValue }) => {
     try {
-      const response = await ftechAddToCart();
+      const response = await fetchAddToCart();
       return response.data
     } catch (error:any) {
       return rejectWithValue(error.message);
     }
   });
 
-export const register = createAsyncThunk('auth/register', async(registerData: IRegister, { rejectWithValue }) => {
-    try {
-        const response = await fetchRegister(registerData);
-        if (response.data) {
-            return response.data;
-        }
-    } catch (error: any) {
-        if (error.response?.data.message) {
-            return rejectWithValue(error.response.data.message);
-        }
-        else {
-            return rejectWithValue(error.message);
-        }
-    }
-});
+// export const register = createAsyncThunk('auth/register', async(registerData: IRegister, { rejectWithValue }) => {
+//     try {
+//         const response = await fetchRegister(registerData);
+//         if (response.data) {
+//             return response.data;
+//         }
+//     } catch (error: any) {
+//         if (error.response?.data.message) {
+//             return rejectWithValue(error.response.data.message);
+//         }
+//         else {
+//             return rejectWithValue(error.message);
+//         }
+//     }
+// });
 
 export const verifyEmail = createAsyncThunk('auth/verify-email', async(verifyData: VerifyEmailModel, { rejectWithValue }) => {
     try {
@@ -104,26 +104,26 @@ export const authSlice = createSlice({
                 }
 
             })
-            .addCase(register.pending, (state) => {
-                state.isLoading = true
-            })
-            .addCase(register.fulfilled, (state, action) => {
-                state.isLoading = false;
-                state.isError = false;
-                state.user = null;
-                state.message = action.payload;
-            })
-            .addCase(register.rejected, (state, action) => {
-                state.isLoading = false;
-                state.isError = true;
-                state.isAuthenticated = false;
-                if (action.error.message) {
-                    state.message = action.error.message;
-                }
-                else {
-                    state.message = 'Hệ thống có lỗi xảy ra';
-                }
-            })
+            // .addCase(register.pending, (state) => {
+            //     state.isLoading = true
+            // })
+            // .addCase(register.fulfilled, (state, action) => {
+            //     state.isLoading = false;
+            //     state.isError = false;
+            //     state.user = null;
+            //     state.message = action.payload;
+            // })
+            // .addCase(register.rejected, (state, action) => {
+            //     state.isLoading = false;
+            //     state.isError = true;
+            //     state.isAuthenticated = false;
+            //     if (action.error.message) {
+            //         state.message = action.error.message;
+            //     }
+            //     else {
+            //         state.message = 'Hệ thống có lỗi xảy ra';
+            //     }
+            // })
             .addCase(verifyEmail.pending, (state) => {
                 state.isLoading = true
             })

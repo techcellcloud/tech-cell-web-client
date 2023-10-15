@@ -2,7 +2,9 @@
 
 import React, { useEffect, useState } from 'react';
 
-import { Container, Stack, Box, } from '@mui/material';
+import Container from '@mui/material/Container';
+import Stack from '@mui/material/Stack';
+import Box from '@mui/material/Box';
 
 import { BrandCategoryCompoment, CarouselComponent, ShopServicesComponent } from '@components/Form';
 import FeaturedSection from './FeaturedSection';
@@ -15,7 +17,6 @@ import { useAppDispatch, useAppSelector } from '@store/store';
 import { getAllProduct } from '@store/slices/productSlice';
 
 import { getThumbnail } from 'utils';
-import { ProductModel } from '@models/Product';
 import { ProductLabel } from '@interfaces/product';
 
 const HomePage = () => {

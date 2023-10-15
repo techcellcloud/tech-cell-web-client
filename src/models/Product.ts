@@ -9,7 +9,7 @@ export class PagingProduct extends Paging {
 export class PriceModel {
   base: number = 0;
   sale: number = 0;
-  special: number | null = null;
+  special: number = 0;
 }
 
 export class VariationModel {

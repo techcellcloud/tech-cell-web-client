@@ -2,7 +2,9 @@
 
 import React, { useEffect, useState } from 'react';
 
-import { Container, Stack, Box, } from '@mui/material';
+import Container from '@mui/material/Container';
+import Stack from '@mui/material/Stack';
+import Box from '@mui/material/Box';
 
 import { BrandCategoryCompoment, CarouselComponent, ShopServicesComponent } from '@components/Form';
 import FeaturedSection from './FeaturedSection';
@@ -15,6 +17,7 @@ import { useAppDispatch, useAppSelector } from '@store/store';
 import { getAllProduct } from '@store/slices/productSlice';
 
 import { getThumbnail } from 'utils';
+import { ProductLabel } from '@interfaces/product';
 
 const HomePage = () => {
     const dispatch = useAppDispatch();
@@ -22,21 +25,26 @@ const HomePage = () => {
 
     const [searchProduct, setSearchProduct] = useState<Paging>(new Paging());
 
+    const [newestProducts, setNewestProducts] = useState<ProductLabel[]>([]);
+
     useEffect(() => {
-        dispatch(getAllProduct(searchProduct));
+        dispatch(getAllProduct(searchProduct)).then();
     }, [searchProduct]);
 
-    const productData = products.data.slice(0, 5).map((product) => {
-        return {
-            id: product._id ?? '',
-            name: product.name ?? '',
-            category: product.category?.name ?? '',
-            price: product.variations[0].price,
-            image: getThumbnail(product.generalImages),
-        };
-    });
+    useEffect(() => {
+        const productData = products.data.slice(0, 4).map((product) => {
+            return {
+                id: product._id ?? '',
+                name: product.name ?? '',
+                category: product.category?.name ?? '',
+                price: product.variations[0].price,
+                image: getThumbnail(product.generalImages),
+            };
+        });
 
-    console.log(productData);
+        setNewestProducts(productData);
+
+    }, [products]);
     
   return (
     <>
@@ -44,7 +52,7 @@ const HomePage = () => {
         <ShopServicesComponent />
         <Container maxWidth="lg">
                 <Stack spacing={3}>
-                    <FeaturedSection initialData={productData} />
+                    <FeaturedSection initialData={newestProducts} />
                     <BrandCategoryCompoment />
                     <Box sx={{ maxWidth: { lg: '100%', xs: '100%' } }}>
                         <Image

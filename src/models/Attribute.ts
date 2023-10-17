@@ -7,15 +7,16 @@ export class CreateAttributeModel {
 }
 
 export class AttributeModel extends CreateAttributeModel {
-  _id?: string | null = null;
-  updatedAt?: string | Date | null = null;
-  createdAt?: string | Date | null = null;
+  _id: string | null = null;
+  updatedAt: string | Date | null = null;
+  createdAt: string | Date | null = null;
 }
 
 export class AttributeDynamics {
-  k?: string | null = null;
-  v?: string | null = null;
-  u?: string | null = null;
+  k: string = "";
+  v: string = "";
+  u: string = "";
+  name: string = "";
 }
 
 export class PagingAttribute extends Paging {

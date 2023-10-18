@@ -5,9 +5,11 @@ import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
+import Typography from '@mui/material/Typography';
+import Stack from '@mui/material/Stack';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
-import Typography from '@mui/material/Typography';
+import HighlightOffOutlinedIcon from '@mui/icons-material/HighlightOffOutlined';
 
 import styles from '@styles/components/productdetail.module.scss';
 
@@ -33,7 +35,7 @@ const CustomizedDialogs: FC<DialogButtonContent> = ({ missingColor, }) => {
   const addCartClickOpen = () => {
     if (missingColor) {
         setOpen({
-            title: 'Thêm vào giỏ hàng thất bại',
+            title: 'Thêm vào giỏ hàng thất bại!',
             isOpen: true,
         });
     }
@@ -42,7 +44,7 @@ const CustomizedDialogs: FC<DialogButtonContent> = ({ missingColor, }) => {
   const buyNowClickOpen = () => {
     if (missingColor) {
         setOpen({
-            title: 'Mua ngay thất bại',
+            title: 'Mua ngay thất bại!',
             isOpen: true,
         });
     }
@@ -68,13 +70,16 @@ const CustomizedDialogs: FC<DialogButtonContent> = ({ missingColor, }) => {
         aria-labelledby="customized-dialog-title"
         open={open.isOpen}
       >
-        <DialogTitle sx={{ m: 0, p: 2 }} id="customized-dialog-title">
+        <DialogTitle sx={{ m: 0, p: 2, textAlign: 'center', borderBottom: '1px solid #d3d3d3' }} id="customized-dialog-title">
           {open.title}
         </DialogTitle>
-        <DialogContent dividers>
-          <Typography gutterBottom>
-            Bạn chưa chọn màu sản phẩm
-          </Typography>
+        <DialogContent sx={{ width: '500px'}}>
+          <Stack spacing={3} alignItems='center' justifyContent='center'>
+            <HighlightOffOutlinedIcon sx={{ fontSize: '180px', color: '#ee4949'}} />
+            <Typography gutterBottom>
+              Bạn chưa chọn màu sản phẩm
+            </Typography>
+          </Stack>
         </DialogContent>
         <DialogActions>
           <Button autoFocus onClick={handleClose}>

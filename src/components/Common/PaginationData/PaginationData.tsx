@@ -81,6 +81,9 @@ const PaginationData: FC<PaginationProps> = ({ initialData, pagingData, handleCh
                 </Box>
                 <Pagination
                     sx={{
+                        '& ul': {
+                            justifyContent: 'flex-end',
+                        },
                         '& .MuiButtonBase-root': {
                             backgroundColor: `#f3f4f6 !important`,
                         },

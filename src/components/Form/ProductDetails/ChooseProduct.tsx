@@ -165,6 +165,7 @@ const ChooseProduct: FC<ProductVariationProps> = ({ variations, handleSelectVari
                 storage: currentVariant.storage,
                 color: currentVariant.color,
                 price: currentVariant.price,
+                isSelectedColor: color !== undefined,
             });
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps

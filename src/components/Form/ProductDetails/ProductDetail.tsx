@@ -28,6 +28,7 @@ import { getDetailsProduct } from '@store/slices/productSlice';
 import { ProductModel } from '@models/Product';
 import { currencyFormat, getSingleAttribute } from 'utils';
 import { VariantInfo } from '@interfaces/product';
+import CustomizedDialogs from './SelectColorDialog';
 
 export interface DialogTitleProps {
     id: string;
@@ -160,14 +161,7 @@ export const ProductDetail = ({ id }: { id: string }) => {
                             />
 
                             {/* Btn thêm sản phẩm và mua sản phẩm */}
-                            <div className={styles.btn_cart}>
-                                <a href="#" className={styles.add_cart}>
-                                    Thêm giỏ hàng
-                                </a>
-                                <a href="#" className={styles.buy_now}>
-                                    Mua Ngay
-                                </a>
-                            </div>
+                            <CustomizedDialogs missingColor={variant !== undefined ? !variant.isSelectedColor : true} />
 
                             {/* Ưu đãi thêm */}
                             <div className={styles.extra_offer_container}>

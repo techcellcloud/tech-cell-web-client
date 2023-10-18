@@ -24,4 +24,5 @@ export interface VariantInfo {
     storage: string;
     color: string;
     price: PriceModel;
+    isSelectedColor: boolean;
 }

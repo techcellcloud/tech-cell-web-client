@@ -1,13 +1,12 @@
 'use client';
 
-import Image from 'next/image';
 import React, { useState } from 'react';
+import Image from 'next/image';
+
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import {
     AppBar,
     Box,
-    CssBaseline,
-    Divider,
     Drawer,
     IconButton,
     Toolbar,
@@ -20,7 +19,7 @@ import {
 import { Menu as MenuIcon, ShoppingCart as ShoppingCartIcon } from '@mui/icons-material';
 import SearchIcon from '@mui/icons-material/Search';
 import { useTheme } from '@mui/material/styles';
-import { MenuComponent, SearchComponent } from '@components/Form';
+import { MenuComponent } from '@components/Form';
 import { DRAWER_WIDTH, NAV_ITEMS } from '@constants/NavContants';
 import { DrawerLayout } from '@components/Layout';
 import Modal from '@mui/material/Modal';
@@ -28,8 +27,9 @@ import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import styles from 'styles/components/button.module.scss';
 import { useAppDispatch, useAppSelector } from '@store/store';
-import { logOut } from '@store/slices/authSlice';
 import { signIn, useSession, signOut } from 'next-auth/react';
+
+import SearchBarBox from '@components/Common/Searching/SearchBarBox';
 
 interface Props {
     window?: () => Window;
@@ -37,7 +37,7 @@ interface Props {
 
 export const HeaderClient = (props: Props) => {
     const { data: session } = useSession();
-    console.log({session});
+    console.log({ session });
     const dispatch = useAppDispatch();
     // const { user } = useAppSelector((state) => state.auth);
     const theme = useTheme();
@@ -137,9 +137,7 @@ export const HeaderClient = (props: Props) => {
                         gap={5}
                         sx={{ justifyContent: { xs: 'space-between' } }}
                     >
-                        <Box sx={{ display: { xs: 'none', lg: 'block' } }}>
-                            <SearchComponent />
-                        </Box>
+                        <SearchBarBox />
                         <Box
                             sx={{
                                 display: { xs: 'none', sm: 'none', md: 'none', lg: 'flex' },

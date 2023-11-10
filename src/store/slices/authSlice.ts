@@ -1,6 +1,10 @@
+import { toastConfig } from '@constants/ToastMsgConfig';
 import { IAuthSlice, ICart, ILogin, IRegister } from '@interfaces/auth';
+import { ProfileAddressRequest } from '@models/Profile';
 import { Dispatch, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { patchProfileAddress } from '@services/ProfileService';
 import { VerifyEmailModel } from 'models';
+import { toast } from 'react-toastify';
 import { fetchLogin, fetchRegister, fetchVerifyEmail } from 'services/index';
 
 export const logIn = createAsyncThunk('auth/login', async(loginData: ILogin, { rejectWithValue }) => {
@@ -175,5 +179,20 @@ export const logOut = () => async (dispatch: Dispatch) => {
     dispatch(logout());
 }
 
-export const { logout, authenticatedSuccess } = authSlice.actions;
-export default authSlice.reducer;
+export const editProfileAddress = (payload: ProfileAddressRequest) => async (dispatch: Dispatch) => {
+  try {
+    const { status } = await patchProfileAddress(payload);
+    if (status === 200) {
+      toast.success('Cập nhật địa chỉ hồ sơ thành công!', toastConfig);
+    }
+  } catch {
+    toast.error('Cập nhật địa chỉ hồ sơ thất bại!', toastConfig);
+  }
+};
+
+
+const { actions, reducer } = authSlice;
+
+export const { logout, authenticatedSuccess } = actions;
+
+export default reducer;

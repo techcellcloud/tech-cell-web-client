@@ -83,4 +83,5 @@ export const {
     getDetailsSuccess,
     fetchedDone,
 } = actions;
+
 export default reducer;

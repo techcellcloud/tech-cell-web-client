@@ -25,10 +25,9 @@ import { DrawerLayout } from '@components/Layout';
 import Modal from '@mui/material/Modal';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
-import styles from 'styles/components/button.module.scss';
+import styles from '@styles/components/button.module.scss';
 import { useAppDispatch, useAppSelector } from '@store/store';
 import { signIn, useSession, signOut } from 'next-auth/react';
-
 import SearchBarBox from '@components/Common/Searching/SearchBarBox';
 
 interface Props {
@@ -168,7 +167,7 @@ export const HeaderClient = (props: Props) => {
                                         Đăng nhập
                                     </Link> */}
                                     <Button onClick={() => signIn()}>
-                                        <Box sx={{ color: 'white' }}>Đăng Nhập</Box>{' '}
+                                        <Box sx={{ color: 'white' ,textTransform:'capitalize'}}>Đăng Nhập</Box>{' '}
                                     </Button>
                                 </Box>
                             )}
@@ -192,7 +191,9 @@ export const HeaderClient = (props: Props) => {
                                             }}
                                         >
                                             <AccountCircleIcon />
+                                            <Box sx={{textTransform:'capitalize',marginLeft:'2px'}}>
                                             {session?.user?.userName}
+                                            </Box>
                                         </Box>
                                     </Button>
 
@@ -205,18 +206,28 @@ export const HeaderClient = (props: Props) => {
                                             'aria-labelledby': 'basic-button',
                                             style: {
                                                 maxHeight: 300,
-                                                width: '12ch',
+                                                width: '20ch',
                                             },
                                         }}
                                     >
                                         <MenuItem sx={{ fontSize: '14px', fontWeight: 500 }}>
-                                            <Button
-                                                // onClick={() => {
-                                                //     dispatch(logOut());
-                                                // }}
-                                                onClick={() => signOut()}
-                                            >
-                                                <Box sx={{ color: 'white' }}>Đăng Xuất</Box>
+                                            <div className={styles.text_link}>
+                                                <Link href={'/profile'} sx={{backgroundColor:'#ee4949'}}>
+                                                <Box sx={{ color: 'white' }}>
+                                                    Cập nhập thông tin
+                                                </Box>
+                                                </Link>
+                                            </div>
+                                            {/* <Button href={'/profile'} sx={{backgroundColor:'#ee4949'}}>
+                                                <Box sx={{ color: 'white' }}>
+                                                    Cập nhập thông tin
+                                                </Box>
+                                            </Button> */}
+                                        </MenuItem>
+
+                                        <MenuItem sx={{ fontSize: '14px', fontWeight: 500 }}>
+                                            <Button onClick={() => signOut()}>
+                                                <Box sx={{ color: 'white' ,textTransform:'capitalize'}}>Đăng Xuất</Box>
                                             </Button>
                                         </MenuItem>
                                     </Menu>

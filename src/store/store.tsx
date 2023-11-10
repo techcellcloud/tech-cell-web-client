@@ -4,6 +4,7 @@ import AuthReducer from './slices/authSlice';
 import ProductReducer from './slices/productSlice';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import createWebStorage from 'redux-persist/es/storage/createWebStorage';
+import cartReducer from './slices/cartSlice';
 import attributeSlice from './slices/attributeSlice';
 import categorySlice from './slices/categorySlice';
 
@@ -39,6 +40,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
     auth: AuthReducer,
     product: ProductReducer,
+    cart: cartReducer,
     attribute: attributeSlice,
     category: categorySlice,
 });

@@ -7,6 +7,7 @@ import styles from '../styles/components/button.module.scss';
 import { ReduxProvider } from '@components/Provider/ReduxProvider';
 import AuthProvider from '@components/Provider/ProviderAuth';
 
+
 const montserrat = Montserrat({ subsets: ['latin'], weight: ['500', '600', '700'] });
 
 export const metadata: Metadata = {
@@ -23,6 +24,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <AuthProvider>
                     <ThemeProviderMui>
                         <ReduxProvider>
+                           
+
                             <HeaderClient />
                             {children}
                             <FooterClient />

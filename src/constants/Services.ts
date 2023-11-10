@@ -31,3 +31,6 @@ export const CART_ENDPOINT = '/carts';
 
 // get provinces
 export const LOCATION_PROVINCES_ENDPOINT = '/address/provinces';
+
+// current user profile
+export const PROFILE_ENDPOINT = '/profile';

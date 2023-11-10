@@ -1,7 +1,7 @@
 import { IAuthSlice, ICart, ILogin, IRegister } from '@interfaces/auth';
 import { Dispatch, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { VerifyEmailModel } from 'models';
-import { fetchLogin, fetchRegister, fetchVerifyEmail, fetchAddToCart } from 'services/AuthService';
+import { fetchLogin, fetchRegister, fetchVerifyEmail } from 'services/index';
 
 export const logIn = createAsyncThunk('auth/login', async(loginData: ILogin, { rejectWithValue }) => {
     try {
@@ -22,14 +22,14 @@ export const logIn = createAsyncThunk('auth/login', async(loginData: ILogin, { r
     }
 });
 
-export const addToCart = createAsyncThunk('auth/carts', async (cartData:ICart, { rejectWithValue }) => {
-    try {
-      const response = await fetchAddToCart();
-      return response.data
-    } catch (error:any) {
-      return rejectWithValue(error.message);
-    }
-  });
+// export const addToCart = createAsyncThunk('auth/carts', async (cartData:ICart, { rejectWithValue }) => {
+//     try {
+//       const response = await fetchAddToCart();
+//       return response.data
+//     } catch (error:any) {
+//       return rejectWithValue(error.message);
+//     }
+//   });
 
 // export const register = createAsyncThunk('auth/register', async(registerData: IRegister, { rejectWithValue }) => {
 //     try {
@@ -147,16 +147,16 @@ export const authSlice = createSlice({
             })
 
             
-            .addCase(addToCart.pending,(state) =>{
-                state.isLoading =true
-            })
-            .addCase(addToCart.fulfilled,(state,action) =>{
-                state.item = action.payload;
-                state.message = 'fulfilled';
-            })
-            .addCase(addToCart.rejected,(state) =>{
-                state.message = 'fulfilled';
-            })
+            // .addCase(addToCart.pending,(state) =>{
+            //     state.isLoading =true
+            // })
+            // .addCase(addToCart.fulfilled,(state,action) =>{
+            //     state.item = action.payload;
+            //     state.message = 'fulfilled';
+            // })
+            // .addCase(addToCart.rejected,(state) =>{
+            //     state.message = 'fulfilled';
+            // })
     }
 });
 

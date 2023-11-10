@@ -1,16 +1,9 @@
-import { rejects } from 'assert';
-import axios, { AxiosInstance } from 'axios';
-import { Districs, Province, Ward } from 'models/Location';
+import instancePublic from '@config/instancePublic.config';
+import { LOCATION_PROVINCES_ENDPOINT } from '@constants/Services';
+import { District, Province, Ward } from '@models/Location';
 
-const instance: AxiosInstance = axios.create({
-    baseURL: 'https://vapi.vnappmob.com/api/',
-    timeout: 5000,
-    headers: {
-        'Content-Type': 'application/json',
-    },
-});
-
-export const getProvinces = () => instance.get<Array<Province>>('province');
-export const getDistricts = (idProvince: string | undefined) =>
-    instance.get<Array<Districs>>(`province/district/${idProvince}`);
-export const getWards = (idDistrics: string | undefined) => instance.get<Array<Ward>>(`province/ward/${idDistrics}`);
+export const getProvinces = () => instancePublic.get<Array<Province>>(LOCATION_PROVINCES_ENDPOINT);
+export const getDistricts = (province_id: string | undefined) =>
+    instancePublic.get<Array<District>>(`/address/districts/${province_id}`);
+export const getWards = (distric_id: string | undefined) =>
+    instancePublic.get<Array<Ward>>(`/address/wards/${distric_id}`);

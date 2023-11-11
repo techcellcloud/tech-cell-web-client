@@ -25,8 +25,7 @@ interface PaginationProps {
 
 const PaginationData: FC<PaginationProps> = ({ initialData, pagingData, handleChange }) => {
     return (
-        <>
-            <Stack spacing={3}>
+        <Stack spacing={3}>
                 <Box
                     sx={{
                         display: 'flex',
@@ -102,7 +101,6 @@ const PaginationData: FC<PaginationProps> = ({ initialData, pagingData, handleCh
                     count={pagingData.totalPage}
                 />
             </Stack>
-        </>
     );
 };
 

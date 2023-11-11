@@ -1,7 +1,11 @@
+import { toastConfig } from '@constants/ToastMsgConfig';
 import { IAuthSlice, ICart, ILogin, IRegister } from '@interfaces/auth';
+import { ProfileAddressRequest } from '@models/Profile';
 import { Dispatch, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { patchProfileAddress } from '@services/ProfileService';
 import { VerifyEmailModel } from 'models';
-import { fetchLogin, fetchVerifyEmail, fetchAddToCart } from 'services/AuthService';
+import { toast } from 'react-toastify';
+import { fetchLogin, fetchRegister, fetchVerifyEmail } from 'services/index';
 
 export const logIn = createAsyncThunk('auth/login', async(loginData: ILogin, { rejectWithValue }) => {
     try {
@@ -23,6 +27,15 @@ export const logIn = createAsyncThunk('auth/login', async(loginData: ILogin, { r
 });
 
 // export const addToCart = createAsyncThunk('auth/carts', async (cartData:ICart, { rejectWithValue }) => {
+//     try {
+//       const response = await fetchAddToCart();
+//       return response.data
+//     } catch (error:any) {
+//       return rejectWithValue(error.message);
+//     }
+//   });
+
+// export const register = createAsyncThunk('auth/register', async(registerData: IRegister, { rejectWithValue }) => {
 //     try {
 //       const response = await fetchAddToCart();
 //       return response.data
@@ -142,6 +155,16 @@ export const authSlice = createSlice({
             // .addCase(addToCart.rejected,(state) =>{
             //     state.message = 'fulfilled';
             // })
+            // .addCase(addToCart.pending,(state) =>{
+            //     state.isLoading =true
+            // })
+            // .addCase(addToCart.fulfilled,(state,action) =>{
+            //     state.item = action.payload;
+            //     state.message = 'fulfilled';
+            // })
+            // .addCase(addToCart.rejected,(state) =>{
+            //     state.message = 'fulfilled';
+            // })
     }
 });
 
@@ -156,5 +179,20 @@ export const logOut = () => async (dispatch: Dispatch) => {
     dispatch(logout());
 }
 
-export const { logout, authenticatedSuccess } = authSlice.actions;
-export default authSlice.reducer;
+export const editProfileAddress = (payload: ProfileAddressRequest) => async (dispatch: Dispatch) => {
+  try {
+    const { status } = await patchProfileAddress(payload);
+    if (status === 200) {
+      toast.success('Cập nhật địa chỉ hồ sơ thành công!', toastConfig);
+    }
+  } catch {
+    toast.error('Cập nhật địa chỉ hồ sơ thất bại!', toastConfig);
+  }
+};
+
+
+const { actions, reducer } = authSlice;
+
+export const { logout, authenticatedSuccess } = actions;
+
+export default reducer;

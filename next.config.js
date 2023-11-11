@@ -7,11 +7,19 @@ const nextConfig = {
     // },
     typescript: {
         ignoreBuildErrors: true,
-     },
+    },
     sassOptions: {
         includePaths: [path.join(__dirname, 'styles')],
     },
     images: {
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'res.cloudinary.com',
+                port: '',
+                pathname: '/deqqlpay1/image/**',
+            },
+        ],
         domains: ['res.cloudinary.com'],
     },
     env: {

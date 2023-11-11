@@ -10,8 +10,6 @@ export const VERIFY_EMAIL_ENDPOINT = '/auth/verify-email';
 export const REFRESH_TOKEN_ENDPOINT = '/auth/refresh-token';
 export const FORGOT_PASSWORD = '/auth/forgot-password';
 export const VERIFY_FORGOT_PASSWORD = '/auth/verify-forgot-password';
-export const ADD_TO_CART = 'auth/carts';
-export const ADDRESS_PROVICES = '/address/provinces';
 
 // Management Account
 export const USERS_ENDPOINT = '/users';
@@ -27,3 +25,12 @@ export const ATTRIBUTES_ENDPOINT = '/attributes';
 
 // Images
 export const IMAGES_ENDPOINT = '/images';
+
+// Carts Management
+export const CART_ENDPOINT = '/carts';
+
+// get provinces
+export const LOCATION_PROVINCES_ENDPOINT = '/address/provinces';
+
+// current user profile
+export const PROFILE_ENDPOINT = '/profile';

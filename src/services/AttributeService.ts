@@ -1,6 +1,7 @@
-import { CreateAttributeModel, PagingAttribute } from "@models/Attribute";
+import { AttributeModel, CreateAttributeModel, PagingAttribute } from "@models/Attribute";
 import instance from "./Instance";
 import { ATTRIBUTES_ENDPOINT } from "@constants/Services";
+import { PagingResponse } from "@models/Common";
 
 export const getAttributes = (payload: PagingAttribute) => {
   const { keyword, select_type, page, pageSize } = payload;
@@ -14,7 +15,7 @@ export const getAttributes = (payload: PagingAttribute) => {
     url += `&keyword=${keyword}`;
   }
 
-  return instance.get<PagingAttribute>(url);
+  return instance.get<PagingResponse<AttributeModel>>(url);
 };
 
 export const getByIdAttribute = (id: string) =>

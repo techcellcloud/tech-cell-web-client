@@ -6,6 +6,7 @@ import {
     VERIFY_EMAIL_ENDPOINT,
     FORGOT_PASSWORD,
     VERIFY_FORGOT_PASSWORD,
+    ADD_TO_CART,
 } from '@constants/Services';
 import { ILogin, IRegister } from '@interfaces/auth';
 import { ForgotPasswordModel, VerifyEmailModel } from 'models';
@@ -25,3 +26,4 @@ export const fetchForgotPassword = (email: string) => instance.post(FORGOT_PASSW
 export const fetchVerifyForgotPassword = (payload: ForgotPasswordModel) =>
     instance.post(VERIFY_FORGOT_PASSWORD, payload);
 
+export const fetchAddToCart = () => instance.get(ADD_TO_CART);

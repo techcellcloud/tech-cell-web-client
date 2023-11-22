@@ -10,6 +10,7 @@ import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import { product } from './product';
 import { ImageModel } from '@models/Product';
 
 interface SliderImgProps {
@@ -82,7 +83,8 @@ export const SliderImgProductDetail: FC<SliderImgProps> = ({ images }) => {
     }, [width, sliderIndex]);
 
     return (
-        <div className={styles.product_page_img}>
+        <>
+            <div className={styles.product_page_img}>
                 {images.map((image, index) => (
                     <div
                         key={image.publicId}
@@ -184,5 +186,6 @@ export const SliderImgProductDetail: FC<SliderImgProps> = ({ images }) => {
                     </div>
                 </div>
             </div>
+        </>
     );
 };

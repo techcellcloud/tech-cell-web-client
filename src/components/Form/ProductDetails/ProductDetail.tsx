@@ -69,131 +69,127 @@ export const ProductDetail = ({ id }: { id: string }) => {
     return isLoadingDetails ? (
         <LoadingSection isLoading={isLoadingDetails} />
     ) : (
-        <div className={styles.productDetails_content}>
-            <Stack direction="row" spacing={2} alignItems="center" className={styles.nav_links}>
-                <Link href="/">Trang chủ</Link>
-                <ArrowForwardIosIcon fontSize="small" sx={{ color: theme.color.red }} />
-                <Link href="/danh-sach-san-pham">Điện Thoại</Link>
-            </Stack>
+        <>
+            <div className={styles.productDetails_content}>
+                <Stack direction="row" spacing={2} alignItems="center" className={styles.nav_links}>
+                    <Link href="/">Trang chủ</Link>
+                    <ArrowForwardIosIcon fontSize="small" sx={{ color: theme.color.red }} />
+                    <Link href="/danh-sach-san-pham">Điện Thoại</Link>
+                </Stack>
 
-            {/* productname_evaluate */}
-            <div className={styles.productname_evaluate}>
-                <div className={styles.productname}>
-                    <h3>{productDetail.name}</h3>
-                </div>
-                <div className={styles.evaluate}>
-                    <div className={styles.evalute_icon}>
-                        <StarRateComponent />
+                {/* productname_evaluate */}
+                <div className={styles.productname_evaluate}>
+                    <div className={styles.productname}>
+                        <h3>{productDetail.name}</h3>
                     </div>
+                    <div className={styles.evaluate}>
+                        <div className={styles.evalute_icon}>
+                            <StarRateComponent />
+                        </div>
 
-                    <div className={styles.evaluateText}>19 đánh giá</div>
+                        <div className={styles.evaluateText}>19 đánh giá</div>
+                    </div>
                 </div>
-            </div>
 
-            <hr className={styles.hr} />
+                <hr className={styles.hr} />
 
-            {/* container */}
-            <div className={styles.container}>
-                <section className={styles.produt_details}>
-                    {/* hình ảnh sản phẩm */}
-                    <SliderImgProductDetail images={productDetail.generalImages} />
+                {/* container */}
+                <div className={styles.container}>
+                    <section className={styles.produt_details}>
+                        {/* hình ảnh sản phẩm */}
+                        <SliderImgProductDetail images={productDetail.generalImages} />
 
-                    {/* Thông tin sản phẩm */}
-                    <div className={styles.product_content_details}>
-                        <div className={styles.product_name}>{productDetail.name}</div>
+                        {/* Thông tin sản phẩm */}
+                        <div className={styles.product_content_details}>
+                            <div className={styles.product_name}>{productDetail.name}</div>
 
-                        {/* hãng sản phẩm */}
-                        <p className={styles.product_category}>
-                            {getSingleAttribute(productDetail.generalAttributes, 'brand').v} - Điện
-                            thoại
-                        </p>
+                            {/* hãng sản phẩm */}
+                            <p className={styles.product_category}>
+                                {getSingleAttribute(productDetail.generalAttributes, 'brand').v} -
+                                Điện thoại
+                            </p>
 
-                        <div className={styles.product_price_old}>
-                            {/* giá sản phẩm */}
-                            {variant !== undefined && (
-                                <>
-                                    {variant.price.sale !== 0 ? (
-                                        <>
-                                            <p className={styles.product_price}>
-                                                {currencyFormat(variant.price.sale)}VND
-                                                <del className={styles.old_price}>
-                                                    {currencyFormat(variant.price.base)}VND
-                                                </del>
-                                            </p>
-                                            {/* Discount */}
-                                            <div className={styles.product_page_offer_sold}>
-                                                <div
-                                                    className={
-                                                        styles.product_page_offer_sold_content
-                                                    }
-                                                >
-                                                    <div className={styles.product_offer}>
-                                                        <LocalOfferIcon
-                                                            sx={{ marginRight: '10px' }}
-                                                        />{' '}
-                                                        {100 -
-                                                            Math.round(
-                                                                (variant.price.sale /
-                                                                    variant.price.base) *
-                                                                    100,
-                                                            )}{' '}
-                                                        % Discount
-                                                    </div>
-                                                    {/* <div className={styles.product_sold}>
+                            <div className={styles.product_price_old}>
+                                {/* giá sản phẩm */}
+                                {variant !== undefined && (
+                                    <>
+                                        {variant.price.sale !== 0 ? (
+                                            <>
+                                                <p className={styles.product_price}>
+                                                    {currencyFormat(variant.price.sale)}đ
+                                                    <del className={styles.old_price}>
+                                                        {currencyFormat(variant.price.base)}đ
+                                                    </del>
+                                                </p>
+                                                {/* Discount */}
+                                                <div className={styles.product_page_offer_sold}>
+                                                    <div
+                                                        className={
+                                                            styles.product_page_offer_sold_content
+                                                        }
+                                                    >
+                                                        <div className={styles.product_offer}>
+                                                            <LocalOfferIcon
+                                                                sx={{ marginRight: '10px' }}
+                                                            />{' '}
+                                                            {100 - Math.round((variant.price.sale / variant.price.base) * 100,)}{' '}
+                                                            % Discount
+                                                        </div>
+                                                        {/* <div className={styles.product_sold}>
                                                     <AttachMoneyIcon />
                                                     <strong>
                                                         {productDemo.sold} <span>Products Sold</span>
                                                     </strong>
                                                 </div> */}
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </>
-                                    ) : (
-                                        <p className={styles.product_price}>
-                                            {currencyFormat(variant.price.base)}VND
-                                        </p>
-                                    )}
-                                </>
-                            )}
-                        </div>
+                                            </>
+                                        ) : (
+                                            <p className={styles.product_price}>
+                                                {currencyFormat(variant.price.base)}đ
+                                            </p>
+                                        )}
+                                    </>
+                                )}
+                            </div>
 
-                        {/* Thông tin sản phẩm */}
-                        <p className={styles.product_desc}></p>
-                        {/* Chọn sản phẩm */}
-                        <ChooseProduct
-                            variations={productDetail.variations}
-                            handleSelectVariant={handleSelectVariant}
-                        />
+                            {/* Thông tin sản phẩm */}
+                            <p className={styles.product_desc}></p>
+                            {/* Chọn sản phẩm */}
+                            <ChooseProduct
+                                variations={productDetail.variations}
+                                handleSelectVariant={handleSelectVariant}
+                            />
 
                             {/* Btn thêm sản phẩm và mua sản phẩm */}
                             <CustomizedDialogs productCart={productDetail} missingColor={variant !== undefined ? !variant.isSelectedColor : true} />
 
-                        {/* Ưu đãi thêm */}
-                        <div className={styles.extra_offer_container}>
-                            <div className={styles.extra_offer_heading}>ƯU ĐÃI THÊM</div>
-                            <div className={styles.extra_offer_content}>
-                                <EndowProduct />
-                            </div>
-                        </div>
-
-                        {/* Sản phẩm mua kèm */}
-                        <div className={styles.product_bundled_container}>
-                            <div className={styles.product_bundled}>
-                                <div className={styles.product_bundled_heading}>
-                                    <h4>Gợi ý sản phẩm mua kèm</h4>
+                            {/* Ưu đãi thêm */}
+                            <div className={styles.extra_offer_container}>
+                                <div className={styles.extra_offer_heading}>ƯU ĐÃI THÊM</div>
+                                <div className={styles.extra_offer_content}>
+                                    <EndowProduct />
                                 </div>
-                                <BundleProduct />
+                            </div>
+
+                            {/* Sản phẩm mua kèm */}
+                            <div className={styles.product_bundled_container}>
+                                <div className={styles.product_bundled}>
+                                    <div className={styles.product_bundled_heading}>
+                                        <h4>Gợi ý sản phẩm mua kèm</h4>
+                                    </div>
+                                    <BundleProduct />
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </section>
+                    </section>
 
-                <section className={styles.produt_all_info}></section>
-            </div>
+                    <section className={styles.produt_all_info}></section>
+                </div>
 
-            <hr className={styles.hr} />
+                <hr className={styles.hr} />
 
-            {/* wrapper */}
+                {/* wrapper */}
 
                 <div className={styles.wrapper}>
                     <div className={styles.wrapper_left}>
@@ -231,8 +227,9 @@ export const ProductDetail = ({ id }: { id: string }) => {
                     </div>
                 </div>
 
-            <hr className={styles.hr} />
-        </div>
+                <hr className={styles.hr} />
+            </div>
+        </>
     );
 };
 

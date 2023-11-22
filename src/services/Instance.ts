@@ -2,11 +2,10 @@ import axios, { AxiosInstance } from 'axios';
 import { API_ENDPOINT } from '@constants/Services';
 import { getAccessToken, getRefreshToken, isAccessTokenExpired, setToken } from 'utils/index';
 import { fetchRefresh } from './AuthService';
-import { signOut } from 'next-auth/react';
 
 const instance: AxiosInstance = axios.create({
     baseURL: API_ENDPOINT,
-    timeout: 10000,
+    timeout: 5000,
     headers: {
         'Content-Type': 'application/json',
     },
@@ -31,8 +30,8 @@ instance.interceptors.response.use(
         return response;
     },
     async (error) => {
-        const prevRequest = error.config;
-        const statusCode = error.response?.status || error.response?.statusCode;
+        const prevRequest = error?.config;
+        const statusCode = error?.response?.status || error?.response?.statusCode;
 
         if (statusCode === 401 && !prevRequest._retry) {
             prevRequest._retry = true;
@@ -42,7 +41,9 @@ instance.interceptors.response.use(
                 return Promise.reject(error);
             }
 
-            if (isAccessTokenExpired()) {
+            const isTokenExpired = isAccessTokenExpired();
+
+            if (isTokenExpired) {
                 try {
                     const response = await fetchRefresh(refreshToken);
                     const { accessToken: newAccessToken, refreshToken: newRefreshToken } =

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
 
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
@@ -16,17 +16,16 @@ import {
     Menu,
     MenuItem,
 } from '@mui/material';
-import { Menu as MenuIcon, ShoppingCart as ShoppingCartIcon } from '@mui/icons-material';
+import { Menu as MenuIcon } from '@mui/icons-material';
 import SearchIcon from '@mui/icons-material/Search';
 import { useTheme } from '@mui/material/styles';
 import { MenuComponent } from '@components/Form';
-import { DRAWER_WIDTH, NAV_ITEMS } from '@constants/NavContants';
+import { DRAWER_WIDTH, NAV_ITEMS } from '@constants/NavConstant';
 import { DrawerLayout } from '@components/Layout';
 import Modal from '@mui/material/Modal';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import styles from '@styles/components/button.module.scss';
-import { useAppDispatch, useAppSelector } from '@store/store';
 import { signIn, useSession, signOut } from 'next-auth/react';
 import SearchBarBox from '@components/Common/Searching/SearchBarBox';
 
@@ -36,14 +35,11 @@ interface Props {
 
 export const HeaderClient = (props: Props) => {
     const { data: session } = useSession();
-    console.log({ session });
-    const dispatch = useAppDispatch();
-    // const { user } = useAppSelector((state) => state.auth);
     const theme = useTheme();
     const { window } = props;
     const [mobileOpen, setMobileOpen] = useState<boolean>(false);
 
-    const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+    const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const openDrop = Boolean(anchorEl);
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         setAnchorEl(event.currentTarget);
@@ -59,7 +55,7 @@ export const HeaderClient = (props: Props) => {
     const container = window !== undefined ? () => window().document.body : undefined;
 
     // Modal search
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const top100Films = [
@@ -73,7 +69,7 @@ export const HeaderClient = (props: Props) => {
     ];
 
     const style = {
-        position: 'absolute' as 'absolute',
+        position: 'absolute',
         top: '13%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
@@ -144,10 +140,9 @@ export const HeaderClient = (props: Props) => {
                                 alignItems: 'center',
                             }}
                         >
-                            {NAV_ITEMS.map((item, i) => (
+                            {NAV_ITEMS.map((item, index) => (
                                 <MenuComponent
-                                    // userdata={item.}
-                                    key={i}
+                                    key={`nav_item_${index.toString()}`}
                                     content={item.name}
                                     options={item?.menu}
                                     icon={item.icon ? <item.icon></item.icon> : undefined}
@@ -158,21 +153,14 @@ export const HeaderClient = (props: Props) => {
                             {!session && (
                                 <Box sx={{ display: 'flex', alignItems: 'center' }}>
                                     <AccountCircleIcon />
-                                    {/* <Link
-                                        href="/login"
-                                        underline="none"
-                                        color="white"
-                                        sx={{ marginLeft: '10px' }}
-                                    >
-                                        Đăng nhập
-                                    </Link> */}
                                     <Button onClick={() => signIn()}>
-                                        <Box sx={{ color: 'white' ,textTransform:'capitalize'}}>Đăng Nhập</Box>{' '}
+                                        <Box sx={{ color: 'white', textTransform: 'capitalize' }}>
+                                            Đăng Nhập
+                                        </Box>{' '}
                                     </Button>
                                 </Box>
                             )}
 
-                            {/* <Box sx={{ display: 'flex', alignItems: 'center' }}> */}
                             {session && (
                                 <>
                                     <Button
@@ -191,8 +179,13 @@ export const HeaderClient = (props: Props) => {
                                             }}
                                         >
                                             <AccountCircleIcon />
-                                            <Box sx={{textTransform:'capitalize',marginLeft:'2px'}}>
-                                            {session?.user?.userName}
+                                            <Box
+                                                sx={{
+                                                    textTransform: 'capitalize',
+                                                    marginLeft: '2px',
+                                                }}
+                                            >
+                                                {session?.user?.userName}
                                             </Box>
                                         </Box>
                                     </Button>
@@ -205,29 +198,21 @@ export const HeaderClient = (props: Props) => {
                                         MenuListProps={{
                                             'aria-labelledby': 'basic-button',
                                             style: {
-                                                maxHeight: 300,
-                                                width: '20ch',
+                                                maxHeight: 100,
+                                                width: '110px',
                                             },
                                         }}
                                     >
                                         <MenuItem sx={{ fontSize: '14px', fontWeight: 500 }}>
-                                            <div className={styles.text_link}>
-                                                <Link href={'/profile'} sx={{backgroundColor:'#ee4949'}}>
-                                                <Box sx={{ color: 'white' }}>
-                                                    Cập nhập thông tin
-                                                </Box>
-                                                </Link>
-                                            </div>
-                                            {/* <Button href={'/profile'} sx={{backgroundColor:'#ee4949'}}>
-                                                <Box sx={{ color: 'white' }}>
-                                                    Cập nhập thông tin
-                                                </Box>
-                                            </Button> */}
-                                        </MenuItem>
-
-                                        <MenuItem sx={{ fontSize: '14px', fontWeight: 500 }}>
                                             <Button onClick={() => signOut()}>
-                                                <Box sx={{ color: 'white' ,textTransform:'capitalize'}}>Đăng Xuất</Box>
+                                                <Box
+                                                    sx={{
+                                                        color: 'white',
+                                                        textTransform: 'capitalize',
+                                                    }}
+                                                >
+                                                    Đăng Xuất
+                                                </Box>
                                             </Button>
                                         </MenuItem>
                                     </Menu>
@@ -236,12 +221,72 @@ export const HeaderClient = (props: Props) => {
                             {/* </Box> */}
                         </Box>
                     </Stack>
-                    <Box sx={{ display: { xs: 'flex', sm: 'flex', md: 'flex', lg: 'none' } }}>
-                        <Box onClick={handleOpen}>
+                    <Box
+                        sx={{
+                            display: { xs: 'flex', sm: 'flex', md: 'flex', lg: 'none' },
+                            alignItems: { xs: 'center', sm: 'center', md: 'center' },
+                        }}
+                    >
+                        <Box sx={{ height: '24px' }} onClick={handleOpen}>
                             <SearchIcon />
                         </Box>
-                        <Box sx={{ marginLeft: '15px' }}>
-                            <ShoppingCartIcon />
+                        <Box sx={{ marginLeft: '15px', height: '24px' }}>
+                            {!session && (
+                                <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                                    <Button sx={{ padding: '0px' }} onClick={() => signIn()}>
+                                        <Box sx={{ color: 'white', textTransform: 'capitalize' }}>
+                                            <AccountCircleIcon />
+                                        </Box>
+                                    </Button>
+                                </Box>
+                            )}
+
+                            {session && (
+                                <>
+                                    <Button
+                                        id="basic-button"
+                                        variant="text"
+                                        aria-controls={open ? 'basic-menu' : undefined}
+                                        aria-haspopup="true"
+                                        aria-expanded={open ? 'true' : undefined}
+                                        onClick={handleClick}
+                                        sx={{ padding: '0px', minWidth: '24px' }}
+                                    >
+                                        <Box
+                                            sx={{
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                color: 'white',
+                                            }}
+                                        >
+                                            <AccountCircleIcon />
+                                        </Box>
+                                    </Button>
+
+                                    <Menu
+                                        id="basic-menu"
+                                        anchorEl={anchorEl}
+                                        open={open}
+                                        onClose={handleClose}
+                                        MenuListProps={{
+                                            'aria-labelledby': 'basic-button',
+                                        }}
+                                    >
+                                        <MenuItem>
+                                            <Button onClick={() => signOut()}>
+                                                <Box
+                                                    sx={{
+                                                        color: 'white',
+                                                        textTransform: 'capitalize',
+                                                    }}
+                                                >
+                                                    Đăng Xuất
+                                                </Box>
+                                            </Button>
+                                        </MenuItem>
+                                    </Menu>
+                                </>
+                            )}
                         </Box>
                     </Box>
                 </Toolbar>

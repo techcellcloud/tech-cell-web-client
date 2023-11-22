@@ -4,7 +4,7 @@ import React, { FC, useEffect, useState } from 'react';
 import Image from 'next/image';
 import styles from '../../../styles/components/productdetail.module.scss';
 import { VariationModel } from '@models/Product';
-import { currencyFormat, getSingleAttribute, sortByCustomOrder } from 'utils';
+import { getSingleAttribute, sortByCustomOrder } from 'utils';
 import { VariantInfo, VariantStorage } from '@interfaces/product';
 
 interface ProductVariationProps {
@@ -197,7 +197,7 @@ const ChooseProduct: FC<ProductVariationProps> = ({ variations, handleSelectVari
                                 >
                                     <div className={styles.product_internal_text}>
                                         <p>{variant.storage}</p>
-                                        <p>{currencyFormat(variant.price.sale)}</p>
+                                        <p>{variant.price.sale}</p>
                                     </div>
                                 </button>
                             )}
@@ -233,7 +233,7 @@ const ChooseProduct: FC<ProductVariationProps> = ({ variations, handleSelectVari
                                             <p>{color.color}</p>
                                             <p>
                                                 {currentVariant !== undefined
-                                                    ? currencyFormat(currentVariant.price.sale)
+                                                    ? currentVariant.price.sale
                                                     : ''}
                                             </p>
                                         </div>

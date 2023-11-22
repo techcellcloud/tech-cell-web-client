@@ -1,7 +1,6 @@
 import instance from './Instance';
 import { CATEGORIES_ENDPOINT } from '@constants/Services';
-import { CategoryModel } from '@models/Category';
-import { Paging, PagingResponse } from '@models/Common';
+import { Paging } from '@models/Common';
 
 export const getCategories = (payload: Paging) => {
     const { page, pageSize, keyword } = payload;
@@ -11,7 +10,7 @@ export const getCategories = (payload: Paging) => {
         url += `&keyword=${keyword}`;
     }
 
-    return instance.get<PagingResponse<CategoryModel>>(url);
+    return instance.get<Paging>(url);
 };
 
 export const getCategoryByLabel = (label: string) =>

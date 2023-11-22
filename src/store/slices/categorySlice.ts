@@ -1,14 +1,10 @@
-import { 
-    CategoryModel,
-    // CategoryData, 
-    CategorySlice 
-} from '@models/Category';
-import { Paging, PagingResponse } from '@models/Common';
+import { CategoryData, CategorySlice } from '@models/Category';
+import { Paging } from '@models/Common';
 import { Dispatch, createSlice } from '@reduxjs/toolkit';
-import { getCategories, getCategoryByLabel } from '@services/index';
+import { getCategories, getCategoryByLabel } from '@services/CategoryService';
 
 const initialState: CategorySlice = {
-    categories: new PagingResponse<CategoryModel>(),
+    categories: new CategoryData(),
     category: null,
     isLoading: false,
     isLoadingDetails: false,
@@ -29,7 +25,7 @@ export const categorySlice = createSlice({
             state.isLoading = false;
         },
         getAllFailure: (state) => {
-            state.categories = new PagingResponse<CategoryModel>();
+            state.categories = new CategoryData();
             state.isLoading = false;
         },
         getDetailsSuccess: (state, { payload }) => {

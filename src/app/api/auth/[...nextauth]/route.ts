@@ -8,8 +8,6 @@ import axios from '@libs/axios';
 const authOptions: NextAuthOptions = {
     providers: [
         CredentialsProvider({
-            name: 'Credentials',
-            type: 'credentials',
             credentials: {
                 emailOrUsername: {
                     label: 'emailOrUsername',
@@ -25,10 +23,8 @@ const authOptions: NextAuthOptions = {
                 };
 
                 return axios
-                    .post(AUTH_LOGIN, payload)
+                    .post<User>(AUTH_LOGIN, payload)
                     .then((response) => {
-                        console.log(response.data);
-                        // localStorage.setItem('user', response.data);
                         return response.data;
                     })
                     .catch((err) => {
@@ -61,7 +57,7 @@ const authOptions: NextAuthOptions = {
                         userName: data.userName,
                         firstName: data.firstName,
                         lastName: data.lastName,
-                        address: data.address,
+                        // address: data.address,
                         role: data.role,
                         accessToken: data.accessToken,
                         refreshToken: data.refreshToken,
@@ -88,10 +84,9 @@ const authOptions: NextAuthOptions = {
             return { ...token, ...user };
         },
         async session({ session, token }) {
-            session.user = token as any;
-            return session; // The return type will match the one returned in `useSession()`
+            session.user = token as unknown as User;
+            return session;
         },
-
         async redirect({ url, baseUrl }) {
             if (url.startsWith('/')) return `${baseUrl}${url}`;
             else if (new URL(url).origin === baseUrl) return url;
@@ -100,8 +95,13 @@ const authOptions: NextAuthOptions = {
     },
     secret: process.env.NEXTAUTH_SECRET,
     pages: {
-        signIn: '/signin',
-        error: '/signin',
+        signIn: '/dang-nhap',
+        error: '/dang-nhap',
+    },
+    logger: {
+        debug: (...data) => console.debug({ ...data }),
+        error: (...data) => console.error({ ...data }),
+        warn: (...data) => console.warn({ ...data }),
     },
 };
 

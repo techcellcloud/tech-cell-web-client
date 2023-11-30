@@ -1,25 +1,13 @@
-'use client';
+import React from 'react';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import HomePage from '@components/Common/Home/HomePage';
 
-import { CarouselComponent, BrandCategoryCompoment ,PromotionComponent} from 'components/Form';
-import { Box } from '@mui/material';
-import Image from 'next/image';
-
-export default function Home() {
+export default async function Home() {
     return (
         <>
-            <CarouselComponent />
-            <BrandCategoryCompoment />
-            <Box sx={{width:{lg:'1200px', xs:'380px'}, margin:'0px auto'}}>
-                <Image
-                    src="/background_img/2.webp"
-                    width={0}
-                    height={0}
-                    sizes="100vw"
-                    style={{ width: '100%', height: 'auto' ,borderRadius:'5px'}}
-                    alt="img1"
-                />
-            </Box>
-            <PromotionComponent />
+            <ToastContainer />
+            <HomePage />
         </>
     );
 }

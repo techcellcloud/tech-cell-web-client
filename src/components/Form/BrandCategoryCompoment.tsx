@@ -12,11 +12,9 @@ export const BrandCategoryCompoment = () => {
                 spacing={1}
                 sx={{
                     marginLeft: { xs: '0.1px' },
-                    width: { xs: '390px', lg: '1200px', sm: '960px' },
-                    border: { xs: 'none', lg: '1px solid #EE4949' },
+                    maxWidth: { xs: '100%', lg: '1200px', sm: '100%' },
                     overflow: 'hidden',
                     borderRadius: { xs: '0px', lg: '5px' },
-                    boxShadow:'0px 0px 10px #f47c7c',
                     cursor: 'pointer',
                 }}
             >

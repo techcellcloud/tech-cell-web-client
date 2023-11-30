@@ -1,15 +1,21 @@
 'use client';
 
 import * as React from 'react';
-import { Button, Menu, MenuItem, useTheme } from '@mui/material';
+import { Button } from '@mui/material';
+import { Menu } from '@mui/material';
+import { MenuItem } from '@mui/material';
+import { useTheme } from '@mui/material';
 import { IMenuOptions } from 'interfaces/form';
 import styles from '@styles/components/button.module.scss';
+import Link from 'next/link';
 
 interface Props {
+    // userdata : string;
     content: string;
     options?: IMenuOptions[];
     isBlackContent?: boolean;
     icon?: React.ReactNode;
+    href: string;
 }
 
 export function MenuComponent(props: Props) {
@@ -25,7 +31,7 @@ export function MenuComponent(props: Props) {
     };
 
     return (
-        <div className={styles.menu_nav}>
+        <Link href={props.href} className={styles.menu_nav}>
             {props.icon && props.icon}
             <Button
                 id="basic-button"
@@ -63,6 +69,6 @@ export function MenuComponent(props: Props) {
                     ))}
                 </Menu>
             )}
-        </div>
+        </Link>
     );
 }
